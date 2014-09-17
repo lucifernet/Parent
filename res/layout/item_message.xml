@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp" >
+
+    <!-- ImageView
+        android:id="@+id/imgProvider"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="6dp"
+        android:contentDescription="@string/empty"
+        android:src="@drawable/ic_launcher" /-->
+
+    <TextView
+        android:id="@+id/txtSign"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="6dp"
+        android:background="@color/bg_school"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/txtFromUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="6dp"
+        android:maxLines="1" />
+
+    <TextView
+        android:id="@+id/txtFromSchool"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="6dp"
+        android:layout_toLeftOf="@id/txtFromUnit"
+        android:layout_toRightOf="@id/txtSign"
+        android:maxLines="1" />
+
+    <TextView
+        android:id="@+id/txtSubject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/txtFromUnit"
+        android:layout_marginTop="6dp"
+        android:layout_toRightOf="@id/txtSign"
+        android:maxLines="2" />
+
+</RelativeLayout>

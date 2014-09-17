@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ischool 家長即時通</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="empty"></string>
+    <string name="slash">/</string>
+    <string name="tab_message">訊息</string>
+    <string name="tab_contact">聯絡人</string>
+    <string name="tab_others">其它</string>
+    <string name="tab_calendar">行事曆</string>
+    <string name="action_switch_user">切換登入帳號</string>
+    <string name="loading">載入中</string>
+    <string name="loading_message">載入中, 請稍候片刻.</string>
+    <string name="login_get_children">取得小孩資訊中.</string>
+    <string name="title_activity_message_content">瀏覽訊息內容</string>
+    <string name="title_activity_attendance">缺曠紀錄</string>
+    <string name="title_activity_discipline">奬懲紀錄</string>
+    <string name="title_activity_sems_score">學期成績</string>
+    <string name="close">關閉</string>
+
+    <!-- other fragment -->
+    <string name="btn_homework">每日作業</string>
+    <string name="btn_discipline">獎懲</string>
+    <string name="btn_absense">缺曠</string>
+    <string name="btn_sem_score">學期成績</string>
+    <string name="btn_eval_score">評量成績</string>
+    <string name="btn_store">商城</string>
+    <string name="btn_parent_code">加入小孩</string>
+
+    <!-- Alert -->
+    <string name="alert_title">提示</string>
+    <string name="alert_internet_disconnect">目前網路無法連線. 是否開啟無線網路設定 ?</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="confirm">確認</string>
+    <string name="cancel">取消</string>
+    <string name="progress_title">載入中</string>
+
+    <!-- calendar fragment -->
+    <string name="calendar_empty">國內平安, 國外無事</string>
+
+    <!-- contact fragment -->
+    <string name="homeroom_teacher">班導師</string>
+
+    <!-- attendance activity -->
+    <string name="title_activity_abs_sems">缺曠紀錄</string>
+    <string name="attendance_unlimit">不限</string>
+    <string name="attendance_date">時間範圍</string>
+    <string name="attendance_from">從</string>
+    <string name="attendance_until">到</string>
+    <string name="attendance_all">全部</string>
+    <string name="attendance_loading">載入學生缺曠資料中&#8230;</string>
+    <string name="attendance_empty_list">查無學生缺曠資料</string>
+
+    <!-- student discipline activity -->
+    <string name="discipline_unlimit">不限</string>
+    <string name="discipline_date">時間範圍</string>
+    <string name="discipline_from">從</string>
+    <string name="discipline_until">到</string>
+    <string name="discipline_all">全部</string>
+    <string name="discipline_loading">載入學生獎懲紀錄中&#8230;</string>
+    <string name="discipline_meritA">大功</string>
+    <string name="discipline_meritB">小功</string>
+    <string name="discipline_meritC">嘉獎</string>
+    <string name="discipline_demeritA">大過</string>
+    <string name="discipline_demeritB">小過</string>
+    <string name="discipline_demeritC">警告</string>
+    <string name="discipline_empty_list">查無學生獎懲資料</string>
+
+    <!-- student score activity -->
+    <string name="score_schoolyear">學年度</string>
+    <string name="score_semester">學期</string>
+    <string name="score_got">實得/已修</string>
+    <string name="score_necessary">必修</string>
+    <string name="score_necessary_dept">部定必修</string>
+    <string name="score_necessary_school">校定必修</string>
+    <string name="score_unnecessary">選修</string>
+    <string name="score_unnecessary_dept">部定選修</string>
+    <string name="score_unnecessary_school">校定選修</string>
+    <string name="score_intern">實習</string>
+    <string name="score_score">成績 :</string>
+    <string name="score_credit">學分 :</string>
+    <string name="score_loading">取得學分資訊中&#8230;</string>
+    <string name="score_loading_semester">取得學期資訊中&#8230;</string>
+    <string name="score_empty_list">查無學生成績資料</string>
+    <string name="title_activity_parent_login">家長登入</string>
+    <string name="title_activity_parent_code">輸入家長代碼</string>
+
+    <!-- add child activity -->
+    <string name="add_child_with_code">若是您手邊已經拿到學校發行的家長 QRCode 表單，那麼您可以透過掃瞄它來建立與小孩的關聯。</string>
+    <string name="add_child_with_code_confirm">是的，我想掃瞄 QRCode</string>
+    <string name="add_child_without_code">若是您沒有拿到 QRCode 表單，但是您知道小孩的學校與您的家長代碼，那麼您可以透過直接輸入來建立關聯。</string>
+    <string name="add_child_without_code_confirm">我想直接輸入家長代碼</string>
+    
+    <!-- parent code activity -->
+    <string name="code_hint_input_school">請輸入學校</string>
+    <string name="code_hint_input_code">請輸入家長代碼</string>
+    <string name="code_hint_input_relation">與小孩的關係</string>
+    <string name="code_button_ok">送出</string>
+    <string name="code_info_message">如何取得家長代碼?\n請詢問孩子或聯絡導師</string>    
+    <string name="title_activity_add_child">加入小孩</string>
+
+    <!-- message content activity -->
+    <string name="message_content_attachments">附件</string>
+    <string name="message_content_downloading">下載檔案中&#8230;</string>
+</resources>
