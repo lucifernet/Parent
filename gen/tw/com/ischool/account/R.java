@@ -40,8 +40,8 @@ public final class R {
 		public static final int common_signin_btn_text_light = 0x7f0a001b;
 	}
 	public static final class dimen {
-		public static final int activity_horizontal_margin = 0x7f080005;
-		public static final int activity_vertical_margin = 0x7f080006;
+		public static final int activity_horizontal_margin = 0x7f070005;
+		public static final int activity_vertical_margin = 0x7f070006;
 	}
 	public static final class drawable {
 		public static final int common_signin_btn_icon_dark = 0x7f020010;
@@ -68,30 +68,30 @@ public final class R {
 		public static final int common_signin_btn_text_normal_light = 0x7f020025;
 		public static final int common_signin_btn_text_pressed_dark = 0x7f020026;
 		public static final int common_signin_btn_text_pressed_light = 0x7f020027;
-		public static final int ic_launcher = 0x7f020031;
-		public static final int ic_plusone_medium_off_client = 0x7f020032;
-		public static final int ic_plusone_small_off_client = 0x7f020033;
-		public static final int ic_plusone_standard_off_client = 0x7f020034;
-		public static final int ic_plusone_tall_off_client = 0x7f020035;
-		public static final int icon = 0x7f020036;
+		public static final int ic_launcher = 0x7f020035;
+		public static final int ic_plusone_medium_off_client = 0x7f020036;
+		public static final int ic_plusone_small_off_client = 0x7f020037;
+		public static final int ic_plusone_standard_off_client = 0x7f020038;
+		public static final int ic_plusone_tall_off_client = 0x7f020039;
+		public static final int icon = 0x7f02003a;
 	}
 	public static final class id {
-		public static final int btnLogin = 0x7f07002f;
-		public static final int hybrid = 0x7f070010;
-		public static final int none = 0x7f07000c;
-		public static final int normal = 0x7f07000d;
-		public static final int satellite = 0x7f07000e;
-		public static final int terrain = 0x7f07000f;
-		public static final int txtPassword = 0x7f07002e;
-		public static final int txtUserName = 0x7f07002d;
-		public static final int webLogin = 0x7f070047;
+		public static final int btnLogin = 0x7f080030;
+		public static final int hybrid = 0x7f08000c;
+		public static final int none = 0x7f08000d;
+		public static final int normal = 0x7f08000e;
+		public static final int satellite = 0x7f08000f;
+		public static final int terrain = 0x7f080010;
+		public static final int txtPassword = 0x7f08002f;
+		public static final int txtUserName = 0x7f08002e;
+		public static final int webLogin = 0x7f080057;
 	}
 	public static final class integer {
 		public static final int google_play_services_version = 0x7f0b0000;
 	}
 	public static final class layout {
-		public static final int activity_login = 0x7f030005;
-		public static final int fragment_signin = 0x7f030010;
+		public static final int activity_login = 0x7f030006;
+		public static final int fragment_signin = 0x7f030016;
 	}
 	public static final class string {
 		public static final int ACCOUNT_LABEL = 0x7f090022;

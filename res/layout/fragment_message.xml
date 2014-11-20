@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"  
@@ -8,7 +8,18 @@
 
     <com.handmark.pulltorefresh.library.PullToRefreshListView
         android:id="@+id/lvMessage"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-</LinearLayout>
+     <TextView
+            android:id="@android:id/empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawableLeft="@drawable/warning"
+            android:gravity="center"
+            android:text="@string/message_empty_list"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:visibility="invisible" />
+</FrameLayout>

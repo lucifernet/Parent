@@ -7,14 +7,19 @@ import ischool.dsa.utility.XmlUtil;
 import ischool.dsa.utility.http.Cancelable;
 import ischool.utilities.StringUtil;
 
+import java.io.InputStream;
 import java.io.Serializable;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.w3c.dom.Element;
 
 import tw.com.ischool.account.login.Accessable;
+import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 
-public class ChildInfo implements Serializable{
+public class ChildInfo implements Serializable {
 	/**
 	 * 
 	 */
@@ -31,6 +36,7 @@ public class ChildInfo implements Serializable{
 	private Accessable _accessable;
 	private String _photo;
 	private TeacherInfo _teacher;
+	private SchoolInfo _schoolInfo;
 
 	public ChildInfo(Accessable accessable, Element source) {
 		setAccessable(accessable);
@@ -51,6 +57,63 @@ public class ChildInfo implements Serializable{
 		_teacher.setName(XmlUtil.getElementText(source, "TeacherName"));
 		_teacher.setPhone(XmlUtil.getElementText(source, "TeacherPhone"));
 		_teacher.setPhoto(XmlUtil.getElementText(source, "TeacherPhoto"));
+	}
+
+	public void getSchoolInfo(final Context context, final OnReceiveListener<SchoolInfo> listener) {
+		if (listener == null)
+			return;
+
+		if (_schoolInfo != null) {
+			listener.onReceive(_schoolInfo);
+			return;
+		}
+
+		DSRequest request = new DSRequest();
+		this.callService(Parent.CONTRACT_PARENT,
+				Parent.SERVICE_GET_SCHOOL_INFO, request, new OnReceiveListener<DSResponse>() {
+					
+					@Override
+					public void onReceive(DSResponse result) {
+						Element content = result.getContent();
+						_schoolInfo = new SchoolInfo(content);
+						
+						//TODO 這裡的 school type 先改成從檔案裡取得
+						try {
+							Resources res = context.getResources();
+							InputStream in_s = res.openRawResource(R.raw.school_list);
+
+							byte[] b = new byte[in_s.available()];
+							in_s.read(b);
+							String rawString = new String(b);
+
+							JSONArray array = new JSONArray(rawString);
+							JSONObject school = null;
+							for(int i=0;i<array.length();i++){
+								JSONObject json = array.getJSONObject(i);
+								String dsns = json.getString("dsnsName");
+								if(dsns.equals(_accessable.getAccessPoint())){
+									school = json;
+									break;
+								}									
+							}
+							
+							if(school != null){
+								String scoreType = school.getString("scoreType");
+								_schoolInfo.setSchoolType(scoreType);
+							}
+						} catch (Exception e) {
+
+						}
+						
+						listener.onReceive(_schoolInfo);
+					}
+					
+					@Override
+					public void onError(Exception ex) {
+						listener.onError(ex);						
+					}
+				},
+				new Cancelable());
 	}
 
 	public String getStudentId() {
@@ -152,41 +215,38 @@ public class ChildInfo implements Serializable{
 	public void callService(String contract, String serviceName,
 			DSRequest request, OnReceiveListener<DSResponse> listener,
 			Cancelable cancelable) {
-		MainActivity.getConnectionHelper().callService(_accessable, contract,
+		Parent.getConnectionHelper().callService(_accessable, contract,
 				serviceName, request, listener, cancelable);
 
 	}
-	
+
 	public void callService(String contract, String serviceName,
 			Element request, OnReceiveListener<DSResponse> listener,
 			Cancelable cancelable) {
-		
+
 		DSRequest req = new DSRequest();
 		req.setContent(request);
-				
-		callService(contract,
-				serviceName, req, listener, cancelable);
+
+		callService(contract, serviceName, req, listener, cancelable);
 
 	}
-	
-	public void callParentService(String serviceName,
-			Element request, OnReceiveListener<DSResponse> listener,
-			Cancelable cancelable) {
-		
+
+	public void callParentService(String serviceName, Element request,
+			OnReceiveListener<DSResponse> listener, Cancelable cancelable) {
+
 		DSRequest req = new DSRequest();
 		req.setContent(request);
-				
-		callService(Parent.CONTRACT_PARENT,
-				serviceName, req, listener, cancelable);
+
+		callService(Parent.CONTRACT_PARENT, serviceName, req, listener,
+				cancelable);
 
 	}
-	
-	public void callParentService(String serviceName,
-			DSRequest request, OnReceiveListener<DSResponse> listener,
-			Cancelable cancelable) {
-				
-		callService(Parent.CONTRACT_PARENT,
-				serviceName, request, listener, cancelable);
+
+	public void callParentService(String serviceName, DSRequest request,
+			OnReceiveListener<DSResponse> listener, Cancelable cancelable) {
+
+		callService(Parent.CONTRACT_PARENT, serviceName, request, listener,
+				cancelable);
 
 	}
 }

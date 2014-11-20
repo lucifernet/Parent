@@ -23,7 +23,6 @@ import tw.com.ischool.parent.R;
 import tw.com.ischool.parent.tabs.others.ChildPicker;
 import tw.com.ischool.parent.tabs.others.ChildPicker.onChildSelectedListener;
 import android.app.ActionBar;
-import android.app.ActionBar.OnNavigationListener;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
@@ -31,6 +30,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -299,6 +299,19 @@ public class DisciplineActivity extends Activity {
 		}
 	}
 
+	@Override
+	public boolean onMenuItemSelected(int featureId, MenuItem item) {
+
+		int itemId = item.getItemId();
+		switch (itemId) {
+		case android.R.id.home:
+			finish();
+			break;
+		}
+
+		return true;
+	}
+	
 	@Override
 	public void onSaveInstanceState(Bundle outState) {
 		outState.putString(PARAM_ATTENDANCE,

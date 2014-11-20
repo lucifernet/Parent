@@ -64,17 +64,17 @@ public final class R {
 		public static final int common_signin_btn_text_normal_light = 0x7f020025;
 		public static final int common_signin_btn_text_pressed_dark = 0x7f020026;
 		public static final int common_signin_btn_text_pressed_light = 0x7f020027;
-		public static final int ic_plusone_medium_off_client = 0x7f020032;
-		public static final int ic_plusone_small_off_client = 0x7f020033;
-		public static final int ic_plusone_standard_off_client = 0x7f020034;
-		public static final int ic_plusone_tall_off_client = 0x7f020035;
+		public static final int ic_plusone_medium_off_client = 0x7f020036;
+		public static final int ic_plusone_small_off_client = 0x7f020037;
+		public static final int ic_plusone_standard_off_client = 0x7f020038;
+		public static final int ic_plusone_tall_off_client = 0x7f020039;
 	}
 	public static final class id {
-		public static final int hybrid = 0x7f070010;
-		public static final int none = 0x7f07000c;
-		public static final int normal = 0x7f07000d;
-		public static final int satellite = 0x7f07000e;
-		public static final int terrain = 0x7f07000f;
+		public static final int hybrid = 0x7f08000c;
+		public static final int none = 0x7f08000d;
+		public static final int normal = 0x7f08000e;
+		public static final int satellite = 0x7f08000f;
+		public static final int terrain = 0x7f080010;
 	}
 	public static final class integer {
 		public static final int google_play_services_version = 0x7f0b0000;

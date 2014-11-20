@@ -8,10 +8,10 @@ package tw.com.ischool.dsutilforandroid;
 
 public final class R {
 	public static final class id {
-		public static final int webLogin = 0x7f070047;
+		public static final int webLogin = 0x7f080057;
 	}
 	public static final class layout {
-		public static final int fragment_signin = 0x7f030010;
+		public static final int fragment_signin = 0x7f030016;
 	}
 	public static final class string {
 		public static final int app_name = 0x7f090020;

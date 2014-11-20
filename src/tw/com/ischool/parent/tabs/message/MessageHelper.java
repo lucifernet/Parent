@@ -12,10 +12,15 @@ public class MessageHelper extends SQLiteOpenHelper {
 	public static final String COLUMN_SERVER = "server";
 	public static final String COLUMN_TIMESTAMP = "timestamp";
 	public static final String COLUMN_RAW_CONTENT = "rawcontent";
+	public static final String COLUMN_ACCOUNT = "account"; // 切換不同帳號時判斷用
+	
+	/**
+	 * 訊息狀態, -1 表示未通知, 0 表示已通知未讀取, 1表示已讀
+	 * **/
 	public static final String COLUMN_DID_READ = "did_read";
 
 	private static final String DATABASE_NAME = "message.db";
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 2;
 
 	// Database creation sql statement
 	private static final String DATABASE_CREATE = "create table "
@@ -23,7 +28,8 @@ public class MessageHelper extends SQLiteOpenHelper {
 			+ " integer primary key autoincrement, " + COLUMN_SERVER_UID
 			+ " integer not null, " + COLUMN_SERVER + " text not null, "
 			+ COLUMN_DID_READ + " integer not null, " + COLUMN_RAW_CONTENT
-			+ " text not null, " + COLUMN_TIMESTAMP + " text not null);";
+			+ " text not null, " + COLUMN_TIMESTAMP + " text not null, "
+			+ COLUMN_ACCOUNT + " text not null);";
 
 	public MessageHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);

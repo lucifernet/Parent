@@ -13,13 +13,17 @@ import org.w3c.dom.Element;
 
 import tw.com.ischool.account.login.Accessable;
 import tw.com.ischool.parent.ChildInfo;
-import tw.com.ischool.parent.MainActivity;
 import tw.com.ischool.parent.Parent;
 import tw.com.ischool.parent.R;
 import tw.com.ischool.parent.tabs.message.sign.ISignProcessor;
 import tw.com.ischool.parent.tabs.message.sign.SignProcessor;
+import tw.com.ischool.parent.tabs.others.settings.SwitchAccountActivity;
+import tw.com.ischool.parent.util.PreferenceHelper;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -49,6 +53,7 @@ public class MessageFragment extends Fragment {
 	private PullToRefreshListView mListView;
 	private int mNewMessageReturned;
 	private int mNewMessageCount = 0;
+	private SwitchAccountReceiver mReceiver;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,9 +62,12 @@ public class MessageFragment extends Fragment {
 		// properly.
 		View rootView = inflater.inflate(R.layout.fragment_message, container,
 				false);
+		TextView emptyText = (TextView) rootView
+				.findViewById(android.R.id.empty);
 
 		mListView = (PullToRefreshListView) rootView
 				.findViewById(R.id.lvMessage);
+		mListView.setEmptyView(emptyText);
 		mListView.setOnItemClickListener(new MessageClickListener());
 		mListView.setMode(Mode.PULL_FROM_START);
 		mListView.setOnRefreshListener(new OnRefreshListener<ListView>() {
@@ -92,13 +100,39 @@ public class MessageFragment extends Fragment {
 		mMessageSource = new MessageDataSource(getActivity());
 		mMessageSource.open();
 
-		getMessage();
+		mReceiver = new SwitchAccountReceiver();
+		Activity activity = getActivity();
+		if (activity != null) {
+			IntentFilter mFilter01 = new IntentFilter(
+					SwitchAccountActivity.BROADCAST_SWITCH_ACCOUNT);
+			activity.registerReceiver(mReceiver, mFilter01);
+		}
+
+		String account = PreferenceHelper.getCacheUseAccount(getActivity());
+		if (!StringUtil.isNullOrWhitespace(account)) {
+			getMessage(account);
+		}
 
 		return rootView;
 	}
 
-	private void getMessage() {
-		Cursor c = mMessageSource.getAllMessages();
+	@Override
+	public void onDestroyView() {
+
+		Activity activity = getActivity();
+		if (activity != null && mReceiver != null) {
+			activity.unregisterReceiver(mReceiver);
+		}
+
+		if (mMessageSource != null) {
+			mMessageSource.close();
+		}
+
+		super.onDestroyView();
+	}
+
+	private void getMessage(String account) {
+		Cursor c = mMessageSource.getAllMessages(account);
 		mMessageAdapter = new MessageAdapter(this.getActivity(), c);
 		mListView.setAdapter(mMessageAdapter);
 
@@ -106,19 +140,21 @@ public class MessageFragment extends Fragment {
 	}
 
 	private void requestNewMessage(final OnReceiveListener<Void> listener) {
+		final String account = PreferenceHelper.getCacheUseAccount(getActivity());
+
 		// TODO 先取得最後一次取出訊息的 Uid
 		Cancelable mCancelable = new Cancelable();
 		mNewMessageReturned = 0;
-		for (Accessable acc : MainActivity.getAccessables()) {
+		for (Accessable acc : Parent.getAccessables()) {
 			final String school = acc.getAccessPoint();
 
-			List<ChildInfo> children = MainActivity.getChildren()
+			List<ChildInfo> children = Parent.getChildren()
 					.findSchoolChild(acc);
 
 			DSRequest request = new DSRequest();
 			Element content = XmlUtil.createElement("Request");
 
-			long lastUid = mMessageSource.getLastUid(school);
+			long lastUid = mMessageSource.getLastUid(school, account);
 
 			XmlUtil.addElement(content, "LastUid", lastUid + StringUtil.EMPTY);
 
@@ -130,7 +166,7 @@ public class MessageFragment extends Fragment {
 
 			mNewMessageCount = 0;
 
-			MainActivity.getConnectionHelper().callService(acc,
+			Parent.getConnectionHelper().callService(acc,
 					Parent.CONTRACT_PARENT, Parent.SERVICE_GET_MESSAGE,
 					request, new OnReceiveListener<DSResponse>() {
 
@@ -141,7 +177,9 @@ public class MessageFragment extends Fragment {
 									.size();
 
 							if (count > 0) {
-								mMessageSource.insertMessages(school, rsp);
+								mMessageSource.insertMessages(school,
+										Parent.getConnectionHelper()
+												.getAccount().name, rsp);
 								mNewMessageCount += count;
 							}
 
@@ -159,7 +197,7 @@ public class MessageFragment extends Fragment {
 	}
 
 	private void checkReceiveCompleted(OnReceiveListener<Void> listener) {
-		if (mNewMessageReturned == MainActivity.getAccessables().size()) {
+		if (mNewMessageReturned == Parent.getAccessables().size()) {
 			if (listener != null)
 				listener.onReceive(null);
 		} else {
@@ -167,7 +205,8 @@ public class MessageFragment extends Fragment {
 		}
 
 		if (mNewMessageCount > 0) {
-			Cursor cursor = mMessageSource.getAllMessages();
+			Cursor cursor = mMessageSource.getAllMessages(Parent
+					.getConnectionHelper().getAccount().name);
 			mMessageAdapter.changeCursor(cursor);
 			mMessageAdapter.notifyDataSetChanged();
 
@@ -199,7 +238,7 @@ public class MessageFragment extends Fragment {
 		if (resultCode != MessageContentActivity.RESULT_DID_READ)
 			return;
 
-		Bundle bundle = data.getExtras();
+		// Bundle bundle = data.getExtras();
 		// long id = bundle.getLong(MessageContentActivity.PARAM_MESSAGE_ID);
 
 		mMessageAdapter.notifyDataSetChanged();
@@ -265,7 +304,7 @@ public class MessageFragment extends Fragment {
 		public View newView(Context context, Cursor cursor, ViewGroup parent) {
 			ViewHolder holder = new ViewHolder();
 
-			View inflate = _inflater.inflate(R.layout.item_message, null);
+			View inflate = _inflater.inflate(R.layout.item_message, parent, false);
 			holder.txtSign = (TextView) inflate.findViewById(R.id.txtSign);
 			holder.txtSubject = (TextView) inflate
 					.findViewById(R.id.txtSubject);
@@ -285,5 +324,15 @@ public class MessageFragment extends Fragment {
 		public TextView txtFromSchool;
 		public TextView txtFromUnit;
 		public long id;
+	}
+
+	private class SwitchAccountReceiver extends BroadcastReceiver {
+
+		@Override
+		public void onReceive(Context arg0, Intent data) {
+			String account = data
+					.getStringExtra(SwitchAccountActivity.PARAM_ACCOUNT_NAME);
+			getMessage(account);
+		}
 	}
 }

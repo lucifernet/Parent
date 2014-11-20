@@ -2,29 +2,22 @@ package tw.com.ischool.parent.tabs.others;
 
 import ischool.utilities.StringUtil;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import tw.com.ischool.parent.ChildInfo;
-import tw.com.ischool.parent.MainActivity;
-import tw.com.ischool.parent.R;
+import tw.com.ischool.parent.Parent;
 import android.app.ActionBar;
 import android.app.ActionBar.OnNavigationListener;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
 
 public class ChildPicker {
 	private static final String PREF_SELECTED_CHILD = "SelectedChild";
 	private static final String PREF_SELECTED_NAME = "StudentName";
 
-	private List<ChildInfo> mChildren;
 	private ChildInfo mSelectedChild;
-	private ChildAdapter mChildAdapter;
 	private onChildSelectedListener mChildChangedListener;
 	private SharedPreferences mSettings;
 
@@ -37,29 +30,34 @@ public class ChildPicker {
 
 		actionBar.setDisplayHomeAsUpEnabled(true);
 
-		mChildren = MainActivity.getChildren().getChildren();
-		if (mChildren.size() > 1) {
+		
+		if (Parent.getChildren().getChildren().size() > 1) {
 			actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
-			mChildAdapter = new ChildAdapter(context);
-			actionBar.setListNavigationCallbacks(mChildAdapter,
+			ArrayList<String> childNames = new ArrayList<String>();
+			for(ChildInfo child : Parent.getChildren().getChildren()){
+				childNames.add(child.getStudentName());
+			}
+			
+			ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, android.R.id.text1, childNames);
+			
+			actionBar.setListNavigationCallbacks(mAdapter,
 					new OnNavigationListener() {
 
 						@Override
 						public boolean onNavigationItemSelected(
 								int itemPosition, long itemId) {
-							mSelectedChild = mChildren.get(itemPosition);
+							mSelectedChild = Parent.getChildren().getChildren().get(
+									itemPosition);
 							Editor editor = mSettings.edit();
 							editor.putString(PREF_SELECTED_NAME,
 									mSelectedChild.getStudentName());
 							editor.commit();
-							
+
 							if (mChildChangedListener != null) {
 
 								mChildChangedListener.onChildSelected(
-										mSelectedChild, mChildren.size());
-								// return
-								// mChildChangedListener.onNavigationItemSelected(itemPosition,
-								// itemId);
+										mSelectedChild, Parent.getChildren().getChildren()
+												.size());
 							}
 
 							return false;
@@ -68,22 +66,24 @@ public class ChildPicker {
 
 			String selectedName = mSettings.getString(PREF_SELECTED_NAME,
 					StringUtil.EMPTY);
-			
+
 			if (!StringUtil.isNullOrWhitespace(selectedName)) {
 				int position = 0;
-				for(ChildInfo child : mChildren){
-					if(child.getStudentName().equals(selectedName)){
+				for (String childName : childNames) {
+					if (childName.equals(selectedName)) {
 						break;
 					}
 					position++;
 				}
-				actionBar.setSelectedNavigationItem(position);
+				if(position < childNames.size())
+					actionBar.setSelectedNavigationItem(position);
+				else
+					actionBar.setSelectedNavigationItem(0);
 			}
-		} else if (mChildren.size() == 1) {
+		} else if (Parent.getChildren().getChildren().size() == 1) {
 			actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-			mSelectedChild = mChildren.get(0);
+			mSelectedChild = Parent.getChildren().getChildren().get(0);
 			if (mChildChangedListener != null) {
-				// mChildChangedListener.onNavigationItemSelected(0, 0);
 				mChildChangedListener.onChildSelected(mSelectedChild, 1);
 			}
 		}
@@ -95,57 +95,5 @@ public class ChildPicker {
 
 	public interface onChildSelectedListener {
 		void onChildSelected(ChildInfo child, int childCount);
-	}
-
-	class ChildAdapter extends BaseAdapter {
-
-		private LayoutInflater _inflater;
-
-		@Override
-		public int getCount() {
-			return mChildren.size();
-		}
-
-		@Override
-		public Object getItem(int arg0) {
-			return mChildren.get(arg0);
-		}
-
-		@Override
-		public long getItemId(int arg0) {
-			return arg0;
-		}
-
-		ChildAdapter(Context context) {
-			_inflater = (LayoutInflater) context
-					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		}
-
-		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
-			ChildInfo child = mChildren.get(position);
-
-			ViewHolder holder = null;
-			if (convertView == null) {
-				convertView = _inflater.inflate(R.layout.item_spinner, null);
-
-				holder = new ViewHolder();
-				holder.textView = (TextView) convertView
-						.findViewById(R.id.textView);
-				;
-
-				convertView.setTag(holder);
-			}
-
-			holder = (ViewHolder) convertView.getTag();
-			holder.textView.setText(child.getStudentName());
-
-			return convertView;
-		}
-
-	}
-
-	static class ViewHolder {
-		TextView textView;
 	}
 }

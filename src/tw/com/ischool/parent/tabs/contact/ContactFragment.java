@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import tw.com.ischool.parent.ChildInfo;
 import tw.com.ischool.parent.Children;
-import tw.com.ischool.parent.MainActivity;
+import tw.com.ischool.parent.Parent;
 import tw.com.ischool.parent.R;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -38,7 +38,7 @@ public class ContactFragment extends Fragment {
 
 	private void getContact() {
 		mContacts = new ArrayList<IContactHandler>();
-		Children children = MainActivity.getChildren();
+		Children children = Parent.getChildren();
 		for(ChildInfo child : children.getChildren()){
 			BannerHandler banner = new BannerHandler(child);
 			mContacts.add(banner);

@@ -3,17 +3,13 @@ package tw.com.ischool.parent;
 import ischool.dsa.client.ContractConnection;
 import ischool.dsa.client.OnProgressListener;
 import ischool.dsa.client.OnReceiveListener;
-import ischool.dsa.utility.DSRequest;
-import ischool.dsa.utility.DSResponse;
-import ischool.dsa.utility.XmlUtil;
-import ischool.dsa.utility.http.Cancelable;
 import ischool.utilities.JSONUtil;
+import ischool.utilities.StringUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONObject;
-import org.w3c.dom.Element;
 
 import tw.com.ischool.account.login.Accessable;
 import tw.com.ischool.account.login.ConnectionData;
@@ -24,6 +20,8 @@ import tw.com.ischool.account.login.GoogleAuthenticateTask.GoogleOAuthTokenListe
 import tw.com.ischool.account.login.GreeningConnectionTask;
 import tw.com.ischool.account.login.LoginHelper;
 import tw.com.ischool.account.login.RefreshGreeningTokenTask;
+import tw.com.ischool.parent.tabs.others.settings.SwitchAccountActivity;
+import tw.com.ischool.parent.util.PreferenceHelper;
 import android.accounts.Account;
 import android.accounts.AccountAuthenticatorActivity;
 import android.accounts.AccountManager;
@@ -44,16 +42,19 @@ public class ParentLoginActivity extends AccountAuthenticatorActivity {
 	public static final int REQUEST_CODE_GOOGLE_OAUTH = 1001;
 	public static final int REQUEST_CODE_LOGIN = 999;
 
-	//public static final String PARAM_CONNECTION_DATA = "ConnectionData";	
+	// public static final String PARAM_CONNECTION_DATA = "ConnectionData";
 	public static final String PARAM_CONNECTION_FAIL_MESSAGE = "FailMessage";
 	public static final String PARAM_CONNECTION_FAIL_DETAIL = "FailDetail";
 	public static final String PARAM_CHILDREN = "Children";
-	
+
+	// for account preference
+
+	// public static final String PREF_KEY_CURRENT_ACCOUNT_TYPE =
+	// "CurrentAccountType";
+
 	private static ConnectionHelper sConnectionHelper;
 
 	private AccountManager mAccountManager;
-	private int mChildResponseCount = 0;
-	private int mTotalResponseCount = 0;
 	private Children mChildren;
 	private TextView mProgressMessage;
 
@@ -64,63 +65,117 @@ public class ParentLoginActivity extends AccountAuthenticatorActivity {
 
 		getActionBar().hide();
 		mProgressMessage = (TextView) findViewById(R.id.txtLoginMessage);
-		
-		login();
+
+		Intent intent = getIntent();
+		String currentAccountName, currentAccountType;
+		if (intent.hasExtra(SwitchAccountActivity.PARAM_ACCOUNT_NAME)) {
+			currentAccountName = intent
+					.getStringExtra(SwitchAccountActivity.PARAM_ACCOUNT_NAME);
+			currentAccountType = intent
+					.getStringExtra(SwitchAccountActivity.PARAM_ACCOUNT_TYPE);
+
+			loginAccount(currentAccountName, currentAccountType);
+		} else {
+			login();
+		}
+	}
+
+	private void loginAccount(String currentAccountName,
+			String currentAccountType) {
+
+		mAccountManager = AccountManager.get(this);
+
+		// ischool login
+		if (currentAccountType.equalsIgnoreCase(LoginHelper.ACCOUNT_TYPE)) {
+			mProgressMessage.setText("使用 ischool 帳戶「 " + currentAccountName
+					+ " 」登入.");
+
+			Account[] ischoolAccounts = mAccountManager
+					.getAccountsByType(currentAccountType);
+			Account ischoolAccount = null;
+			for (Account a : ischoolAccounts) {
+				ischoolAccount = a;
+				break;
+			}
+			if (ischoolAccount != null)
+				loginIschoolAccount(ischoolAccount);
+		} else if (currentAccountType
+				.equalsIgnoreCase(GoogleAuthUtil.GOOGLE_ACCOUNT_TYPE)) {
+			mProgressMessage.setText("使用 google 帳戶「 " + currentAccountName
+					+ " 」登入.");
+
+			exchangeGreeningTokenWithGoogleAccount(currentAccountName);
+		}
+
 	}
 
 	private void login() {
+		String currentAccount = PreferenceHelper.getCacheUseAccount(this);
+		// String currentAccountType =
+		// pref.getString(PREF_KEY_CURRENT_ACCOUNT_TYPE, StringUtil.EMPTY);
+
 		// 檢查 mobile 裝置內是否有 ischool 帳號
 		mAccountManager = AccountManager.get(this);
 
 		final Account[] ischoolAccounts = mAccountManager
 				.getAccountsByType(LoginHelper.ACCOUNT_TYPE);
 
-
 		// 無 ischool 帳號
 		if (ischoolAccounts.length == 1) {
 			Account account = ischoolAccounts[0];
-			mProgressMessage.setText("使用 ischool 帳戶「 " + account.name
-					+ " 」登入.");
+			mProgressMessage
+					.setText("使用 ischool 帳戶「 " + account.name + " 」登入.");
 
 			loginIschoolAccount(account);
 		} else if (ischoolAccounts.length == 0) {
 			final Account[] googleAccounts = mAccountManager
 					.getAccountsByType(GoogleAuthUtil.GOOGLE_ACCOUNT_TYPE);
 
-			//TODO 先只抓第一筆 google 帳號出來, 實際上應該要讓使用者選擇
+			// TODO 先只抓第一筆 google 帳號出來, 實際上應該要讓使用者選擇
 			if (googleAccounts.length >= 1) {
 				final Account googleAccount = googleAccounts[0];
 				exchangeGreeningTokenWithGoogleAccount(googleAccount.name);
 			}
-			
+
 		} else {
-			final AlertDialog.Builder adb = new AlertDialog.Builder(this);
-			adb.setTitle(getString(R.string.login_dialog_title));
-			adb.setCancelable(false);
+			// 在這裡就表示他有兩個以上的 ischool 帳號了
+			if (StringUtil.isNullOrWhitespace(currentAccount)) {
 
-			ArrayList<String> names = new ArrayList<String>();
-			for (Account account : ischoolAccounts) {
-				names.add(account.name);
-			}
+				final AlertDialog.Builder adb = new AlertDialog.Builder(this);
+				adb.setTitle(getString(R.string.login_dialog_title));
+				adb.setCancelable(false);
 
-			String[] items = new String[names.size()];
-			items = names.toArray(items);
-
-			// final AlertDialog mDialog;
-			adb.setSingleChoiceItems(items, 0, new OnClickListener() {
-
-				@Override
-				public void onClick(DialogInterface d, int n) {
-					d.dismiss();
-
-					mProgressMessage.setText("ischool 登入認證.");
-
-					Account ischoolAccount = ischoolAccounts[n];
-					exchangeGreeningTokenWithGoogleAccount(ischoolAccount.name);
+				ArrayList<String> names = new ArrayList<String>();
+				for (Account account : ischoolAccounts) {
+					names.add(account.name);
 				}
-			});
 
-			adb.show();
+				String[] items = new String[names.size()];
+				items = names.toArray(items);
+
+				// final AlertDialog mDialog;
+				adb.setSingleChoiceItems(items, 0, new OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface d, int n) {
+						d.dismiss();
+
+						mProgressMessage.setText("ischool 登入認證.");
+
+						Account ischoolAccount = ischoolAccounts[n];
+						exchangeGreeningTokenWithGoogleAccount(ischoolAccount.name);
+					}
+				});
+
+				adb.show();
+			} else {
+				for (Account ischoolAccount : ischoolAccounts) {
+					if (ischoolAccount.name.equalsIgnoreCase(currentAccount)) {
+						exchangeGreeningTokenWithGoogleAccount(ischoolAccount.name);
+						break;
+					}
+				}
+			}
 		}
 	}
 
@@ -131,20 +186,21 @@ public class ParentLoginActivity extends AccountAuthenticatorActivity {
 				AccountManager.KEY_AUTHTOKEN);
 
 		RefreshGreeningTokenTask task = new RefreshGreeningTokenTask(this,
-				mAccountManager, ischoolAccount, new OnProgressListener<ConnectionData>() {
-					
+				mAccountManager, ischoolAccount,
+				new OnProgressListener<ConnectionData>() {
+
 					@Override
 					public void onReceive(ConnectionData result) {
 						getAccessables(result);
 					}
-					
+
 					@Override
 					public void onError(Exception ex) {
 						// 這裡應該是用 GOOGLE 帳號登入, 但在目前的情境下幾乎都是 googleAccount =
 						// ischoolAccount
 						exchangeGreeningTokenWithGoogleAccount(ischoolAccount.name);
 					}
-					
+
 					@Override
 					public void onProgressUpdate(String message) {
 						mProgressMessage.setText(message);
@@ -193,14 +249,14 @@ public class ParentLoginActivity extends AccountAuthenticatorActivity {
 
 			@Override
 			public void onError(Exception ex) {
-				onDeadError("取得 Google OAuth Token 發生錯誤.", ex);		
+				onDeadError("取得 Google OAuth Token 發生錯誤.", ex);
 			}
 
 			@Override
 			public void onUserRecoverable(Intent intent) {
 				// 第一次總是要人家答應的
 				mProgressMessage.setText("使用者授權中.");
-			
+
 				startActivityForResult(intent, REQUEST_CODE_GOOGLE_OAUTH);
 			}
 		});
@@ -288,79 +344,107 @@ public class ParentLoginActivity extends AccountAuthenticatorActivity {
 		task.execute(data.getAccessToken());
 	}
 
-	//取得可登入學校
-	private void getAccessables(final ConnectionData data){
+	// 取得可登入學校
+	private void getAccessables(final ConnectionData data) {
 		mProgressMessage.setText("取得可登入學校...");
-		
+
 		final ConnectionHelper ch = data.createConnectionHelper(this);
-		ch.getAccessables(new OnReceiveListener<List<Accessable>>() {
-			
+		ch.getQuickAccessables(this, new OnReceiveListener<List<Accessable>>() {
+
 			@Override
 			public void onReceive(List<Accessable> result) {
 				mProgressMessage.setText("取得學校完成");
 				getChildren(ch, result);
 			}
-			
+
 			@Override
 			public void onError(Exception ex) {
 				onDeadError("取得學校時發生錯誤", ex);
 			}
-		});		
+		});
 	}
-	
-	//取得小孩清單
-	private void getChildren(final ConnectionHelper ch, List<Accessable> result){
+
+	// 取得小孩清單
+	private void getChildren(final ConnectionHelper ch, List<Accessable> result) {
 		mProgressMessage.setText("取得小孩清單...");
-		
-		mChildResponseCount = 0;
-		mTotalResponseCount = result.size();
-		if(mChildren == null)
-			mChildren = new Children();
-		mChildren.clear();
-		
-		for(final Accessable access : result){			
-			
-			ch.callService(access, Parent.CONTRACT_PARENT, Parent.SERVICE_GET_MY_CHILD, new DSRequest(), new OnReceiveListener<DSResponse>() {
-				
-				@Override
-				public void onReceive(DSResponse result) {
-					
-					Element content = result.getBody();
-					for(Element child : XmlUtil.selectElements(content,"Student")) {
-						ChildInfo info = new ChildInfo(access, child);
-						mChildren.addChild(info);
-					}
-					
-					getChildrenResult(ch);
-				}
-				
-				@Override
-				public void onError(Exception ex) {
-					getChildrenResult(ch);
-				}
-			}, new Cancelable());
-		}
-	}
-	
-	private void getChildrenResult(ConnectionHelper ch){
-		mChildResponseCount++;
-		
-		if(mChildResponseCount == mTotalResponseCount)
+
+		// 如果無可連結學校, 那應該是新帳號, 直接請他輸入 parent code
+		if (result.size() == 0) {
 			onSuccess(ch, mChildren);
+			return;
+		}
+
+		ChildrenHelper childHelper = new ChildrenHelper(this, ch, result);
+		Children children = childHelper.getPrefChildren();
+
+		// 若有小孩 cache, 出去吧
+		if (children.getChildren().size() > 0) {
+			onSuccess(ch, children);
+			return;
+		}
+
+		childHelper.getChildren(new OnReceiveListener<Children>() {
+
+			@Override
+			public void onReceive(Children result) {
+				onSuccess(ch, result);
+
+			}
+
+			@Override
+			public void onError(Exception ex) {
+				// 這裡不會被觸發
+			}
+		});
 	}
-	
+
 	// 最後成功流程
 	private void onSuccess(ConnectionHelper ch, Children children) {
 		mProgressMessage.setText("完成登入!");
 
 		sConnectionHelper = ch;
-		
+
+		try {
+			PreferenceHelper.cacheUseAccount(this, ch.getAccount().name);
+		} catch (Exception ex) {
+
+		}
+
 		Intent intent = new Intent();
 		intent.putExtra(PARAM_CHILDREN, children);
 		setResult(RESULT_LOGIN_OK, intent);
 
 		finish();
 	}
+
+	// private String convertChildToString(Children children) {
+	// ByteArrayOutputStream bos = new ByteArrayOutputStream();
+	// ObjectOutput out = null;
+	// String base64String = StringUtil.EMPTY;
+	// try {
+	// out = new ObjectOutputStream(bos);
+	// out.writeObject(children);
+	// byte[] yourBytes = bos.toByteArray();
+	//
+	// base64String = Base64.encodeToString(yourBytes, Base64.DEFAULT);
+	// } catch (IOException ex) {
+	// base64String = StringUtil.EMPTY;
+	// } finally {
+	// try {
+	// if (out != null) {
+	// out.close();
+	// }
+	// } catch (IOException ex) {
+	// // ignore close exception
+	// }
+	// try {
+	// bos.close();
+	// } catch (IOException ex) {
+	// // ignore close exception
+	// }
+	// }
+	// return base64String;
+	// }
 
 	// 最終失敗流程
 	private void onDeadError(String message, Exception exception) {

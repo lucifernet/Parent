@@ -2,10 +2,8 @@ package tw.com.ischool.parent.tabs.others.sems_score;
 
 import tw.com.ischool.parent.R;
 import tw.com.ischool.parent.tabs.others.IGridItemHandler;
-import tw.com.ischool.parent.tabs.others.discipline.DisciplineActivity;
 import android.content.Context;
 import android.content.Intent;
-import android.widget.Toast;
 
 public class SemScoreItemHandler implements IGridItemHandler {
 

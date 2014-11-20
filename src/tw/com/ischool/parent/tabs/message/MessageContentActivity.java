@@ -99,10 +99,12 @@ public class MessageContentActivity extends Activity {
 		mMessageSource.setDidRead(id);
 
 		BulletinProcessor.getInstanct(actionType).process(this, mTxtSign, raw);
-		
+
 		// 附加檔案
-		//Log.d(MainActivity.TAG, XmlHelper.convertToString(contentMessage, true));
-		Element attachments = XmlUtil.selectElement(contentMessage, "Attachments");
+		// Log.d(MainActivity.TAG, XmlHelper.convertToString(contentMessage,
+		// true));
+		Element attachments = XmlUtil.selectElement(contentMessage,
+				"Attachments");
 		List<Element> urls = XmlUtil.selectElements(attachments, "URL");
 		if (urls.size() == 0) {
 			mLayoutAttachements.setVisibility(View.GONE);
@@ -121,24 +123,25 @@ public class MessageContentActivity extends Activity {
 				final String urlString = url.getTextContent();
 				String[] s = urlString.split("/");
 				String fname = urlString;
-				if (s.length > 0){
+				if (s.length > 0) {
 					fname = s[s.length - 1];
 					try {
 						fname = URLDecoder.decode(fname, "UTF-8");
 					} catch (UnsupportedEncodingException e) {
-						
+
 					}
 				}
 				final String fileName = fname;
 				View child = getLayoutInflater().inflate(
 						R.layout.item_attachments, null);
-				
+
 				TextView txtFileName = (TextView) child
 						.findViewById(R.id.txtFileName);
 				txtFileName.setText(fileName);
-				
-				LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-		        layoutParams.setMargins(10, 10, 10, 10);
+
+				LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+						LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+				layoutParams.setMargins(10, 10, 10, 10);
 				mLayoutAttachements.addView(child, layoutParams);
 
 				child.setOnClickListener(new OnClickListener() {
@@ -168,7 +171,8 @@ public class MessageContentActivity extends Activity {
 
 	@Override
 	protected void onDestroy() {
-		mMessageSource.close();
+		if (mMessageSource != null)
+			mMessageSource.close();
 		super.onDestroy();
 	}
 
@@ -189,7 +193,7 @@ public class MessageContentActivity extends Activity {
 		private Context context;
 		private PowerManager.WakeLock mWakeLock;
 		private String mFileName;
-		
+
 		public DownloadTask(Context context) {
 			this.context = context;
 		}
@@ -199,7 +203,7 @@ public class MessageContentActivity extends Activity {
 			InputStream input = null;
 			OutputStream output = null;
 			HttpURLConnection connection = null;
-						
+
 			try {
 				URL url = new URL(sUrl[0]);
 				connection = (HttpURLConnection) url.openConnection();
@@ -222,11 +226,14 @@ public class MessageContentActivity extends Activity {
 
 				String[] s = sUrl[0].split("/");
 				String fname = s[s.length - 1];
-				if (s.length > 0){
+				if (s.length > 0) {
 					fname = s[s.length - 1];
 					fname = URLDecoder.decode(fname, "UTF-8");
 				}
-				File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), fname);
+				File file = new File(
+						Environment
+								.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
+						fname);
 				mFileName = file.getAbsolutePath();
 				output = new FileOutputStream(file);
 
@@ -292,47 +299,48 @@ public class MessageContentActivity extends Activity {
 				Toast.makeText(context, "Download error: " + result,
 						Toast.LENGTH_LONG).show();
 			else {
-				Toast.makeText(context, "檔案儲存於 : " + mFileName, Toast.LENGTH_SHORT)
-						.show();
+				Toast.makeText(context, "檔案儲存於 : " + mFileName,
+						Toast.LENGTH_SHORT).show();
 				openFile(mFileName);
 			}
 		}
 	}
-	
-	private void openFile(String fileName){
+
+	private void openFile(String fileName) {
 		MimeTypeMap myMime = MimeTypeMap.getSingleton();
 
 		Intent newIntent = new Intent(android.content.Intent.ACTION_VIEW);
 
 		File file = new File(fileName);
-		
-		//Intent newIntent = new Intent(Intent.ACTION_VIEW);
-		String mimeType = myMime.getMimeTypeFromExtension(fileExt(fileName).substring(1));
-		newIntent.setDataAndType(Uri.fromFile(file),mimeType);
+
+		// Intent newIntent = new Intent(Intent.ACTION_VIEW);
+		String mimeType = myMime.getMimeTypeFromExtension(fileExt(fileName)
+				.substring(1));
+		newIntent.setDataAndType(Uri.fromFile(file), mimeType);
 		newIntent.setFlags(newIntent.FLAG_ACTIVITY_NEW_TASK);
 		try {
-		    startActivity(newIntent);
+			startActivity(newIntent);
 		} catch (android.content.ActivityNotFoundException e) {
-		    Toast.makeText(this, "無開啟此檔案的應用程式", 4000).show();
+			Toast.makeText(this, "無開啟此檔案的應用程式", 4000).show();
 		}
 	}
-	
-	private String fileExt(String url) {
-	    if (url.indexOf("?")>-1) {
-	        url = url.substring(0,url.indexOf("?"));
-	    }
-	    if (url.lastIndexOf(".") == -1) {
-	        return null;
-	    } else {
-	        String ext = url.substring(url.lastIndexOf(".") );
-	        if (ext.indexOf("%")>-1) {
-	            ext = ext.substring(0,ext.indexOf("%"));
-	        }
-	        if (ext.indexOf("/")>-1) {
-	            ext = ext.substring(0,ext.indexOf("/"));
-	        }
-	        return ext.toLowerCase();
 
-	    }
+	private String fileExt(String url) {
+		if (url.indexOf("?") > -1) {
+			url = url.substring(0, url.indexOf("?"));
+		}
+		if (url.lastIndexOf(".") == -1) {
+			return null;
+		} else {
+			String ext = url.substring(url.lastIndexOf("."));
+			if (ext.indexOf("%") > -1) {
+				ext = ext.substring(0, ext.indexOf("%"));
+			}
+			if (ext.indexOf("/") > -1) {
+				ext = ext.substring(0, ext.indexOf("/"));
+			}
+			return ext.toLowerCase();
+
+		}
 	}
 }

@@ -1,8 +1,9 @@
-package tw.com.ischool.parent.tabs.others;
+package tw.com.ischool.parent.tabs.others.eval_score;
 
 import tw.com.ischool.parent.R;
+import tw.com.ischool.parent.tabs.others.IGridItemHandler;
 import android.content.Context;
-import android.widget.Toast;
+import android.content.Intent;
 
 public class EvalScoreItemHandler implements IGridItemHandler {
 
@@ -14,7 +15,7 @@ public class EvalScoreItemHandler implements IGridItemHandler {
 
 	@Override
 	public int getDrawableId() {
-		return android.R.drawable.ic_lock_lock;
+		return R.drawable.eval_score;
 	}
 
 	@Override
@@ -24,9 +25,8 @@ public class EvalScoreItemHandler implements IGridItemHandler {
 
 	@Override
 	public void onClick() {
-		Toast.makeText(_context,
-				_context.getString(getTitleId()) + " onClicked",
-				Toast.LENGTH_SHORT).show();
+		Intent intent = new Intent(_context, EvalScoreActivity.class);
+		_context.startActivity(intent);
 	}
 
 }

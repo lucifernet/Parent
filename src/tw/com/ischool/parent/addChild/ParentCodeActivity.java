@@ -17,13 +17,13 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.w3c.dom.Element;
 
-import tw.com.ischool.parent.MainActivity;
 import tw.com.ischool.parent.Parent;
 import tw.com.ischool.parent.R;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -54,6 +54,8 @@ public class ParentCodeActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_parent_code);
 
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		
 		setTitle("輸學家長代碼");
 		
 		mTxtSchool = (AutoCompleteTextView) findViewById(R.id.txtSchool);
@@ -102,6 +104,19 @@ public class ParentCodeActivity extends Activity {
 		});
 	}
 
+	@Override
+	public boolean onMenuItemSelected(int featureId, MenuItem item) {
+
+		int itemId = item.getItemId();
+		switch (itemId) {
+		case android.R.id.home:
+			finish();
+			break;
+		}
+
+		return true;
+	}
+	
 	private void loadSchools(OnReceiveListener<SchoolList> listener) {
 		SchoolList list = new SchoolList();
 
@@ -150,7 +165,7 @@ public class ParentCodeActivity extends Activity {
 			mDsnsName = mTxtSchool.getText().toString();
 		}
 
-		ContractConnection greening = MainActivity.getConnectionHelper()
+		ContractConnection greening = Parent.getConnectionHelper()
 				.getGreening();
 		greening.connectAnotherByPassportAsync(mDsnsName, Parent.CONTRACT_JOIN, true, new OnReceiveListener<ContractConnection>() {
 			
@@ -199,7 +214,7 @@ public class ParentCodeActivity extends Activity {
 		XmlUtil.addElement(application, "Type","dynpkg");		
 		request.setContent(content);
 		
-		ContractConnection greening = MainActivity.getConnectionHelper()
+		ContractConnection greening = Parent.getConnectionHelper()
 				.getGreening();
 		greening.sendAsyncRequest(Parent.SERVICE_ADD_APPLICATION_REF,request , new OnReceiveListener<DSResponse>() {
 			

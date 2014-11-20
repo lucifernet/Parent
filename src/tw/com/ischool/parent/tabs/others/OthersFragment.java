@@ -6,8 +6,10 @@ import java.util.List;
 import tw.com.ischool.parent.R;
 import tw.com.ischool.parent.tabs.others.attendance.AbsenseItemHandler;
 import tw.com.ischool.parent.tabs.others.discipline.DisciplineItemHandler;
+import tw.com.ischool.parent.tabs.others.eval_score.EvalScoreItemHandler;
 import tw.com.ischool.parent.tabs.others.parent_code.ParentCodeItemHandler;
 import tw.com.ischool.parent.tabs.others.sems_score.SemScoreItemHandler;
+import tw.com.ischool.parent.tabs.others.settings.SettingsItemHandler;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -38,7 +40,10 @@ public class OthersFragment extends Fragment {
 		mGridItems.add(new AbsenseItemHandler(getActivity()));
 		mGridItems.add(new DisciplineItemHandler(getActivity()));
 		mGridItems.add(new SemScoreItemHandler(getActivity()));
+		mGridItems.add(new EvalScoreItemHandler(getActivity()));
 		mGridItems.add(new ParentCodeItemHandler(getActivity()));
+		mGridItems.add(new SettingsItemHandler(getActivity()));
+		
 		//mGridItems.add(new EvalScoreItemHandler(getActivity()));
 		//mGridItems.add(new StoreItemHandler(getActivity()));
 

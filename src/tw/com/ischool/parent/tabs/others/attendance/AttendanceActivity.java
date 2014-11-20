@@ -34,6 +34,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -201,6 +202,19 @@ public class AttendanceActivity extends Activity {
 
 	}
 
+	@Override
+	public boolean onMenuItemSelected(int featureId, MenuItem item) {
+
+		int itemId = item.getItemId();
+		switch (itemId) {
+		case android.R.id.home:
+			finish();
+			break;
+		}
+
+		return true;
+	}
+	
 	private OnClickListener mBtnOnClickListener = new OnClickListener() {
 
 		@Override

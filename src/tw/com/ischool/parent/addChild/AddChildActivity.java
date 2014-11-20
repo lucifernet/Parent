@@ -1,5 +1,7 @@
 package tw.com.ischool.parent.addChild;
 
+import java.util.List;
+
 import ischool.dsa.client.ContractConnection;
 import ischool.dsa.client.OnReceiveListener;
 import ischool.dsa.exception.DSAServerException;
@@ -11,7 +13,9 @@ import ischool.utilities.StringUtil;
 
 import org.w3c.dom.Element;
 
-import tw.com.ischool.parent.MainActivity;
+import tw.com.ischool.account.login.Accessable;
+import tw.com.ischool.parent.Children;
+import tw.com.ischool.parent.ChildrenHelper;
 import tw.com.ischool.parent.Parent;
 import tw.com.ischool.parent.R;
 import android.app.Activity;
@@ -19,6 +23,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -39,6 +44,8 @@ public class AddChildActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_child);
 
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		
 		mTxtMesg = (TextView) this.findViewById(R.id.txtMessage);
 		mBtnCode = (Button) this.findViewById(R.id.btnCode);
 		mBtnScan = (Button) this.findViewById(R.id.btnScan);
@@ -85,7 +92,7 @@ public class AddChildActivity extends Activity {
 				// content sample : EA47FF@test.b.nehs.hc.edu.tw
 				String contents = data.getStringExtra("SCAN_RESULT");
 				if (!contents.contains("@")) {
-					setError("不合法的 QRCode");
+					setError(R.string.add_child_error_invalid_qrcode);
 					return;
 				}
 				String[] array = contents.split("@");
@@ -98,30 +105,43 @@ public class AddChildActivity extends Activity {
 			}
 		} else if (requestCode == ParentCodeActivity.REQUEST_CODE_PARENT_CODE){
 			//String code = data.getStringExtra(ParentCodeActivity.PARAM_)
+			//TODO
 			if(resultCode == RESULT_OK) {
-				setResult(RESULT_CHILD_ADDED);
-				finish();
+				syncAccessable();
 			}
 		}
 	}
 
+	@Override
+	public boolean onMenuItemSelected(int featureId, MenuItem item) {
+
+		int itemId = item.getItemId();
+		switch (itemId) {
+		case android.R.id.home:
+			finish();
+			break;
+		}
+
+		return true;
+	}
+	
 	private void addChild(final String dsns, final String code) {
-		setMessage("連結學校中...");
+		setMessage(R.string.add_child_connect_accessable);
 		
-		ContractConnection greening = MainActivity.getConnectionHelper()
+		ContractConnection greening = Parent.getConnectionHelper()
 				.getGreening();
 		greening.connectAnotherByPassportAsync(dsns, Parent.CONTRACT_JOIN,
 				true, new OnReceiveListener<ContractConnection>() {
 
 					@Override
 					public void onReceive(ContractConnection result) {
-						setMessage("加入家長中...");
+						setMessage(R.string.add_child_add_parent);
 						joinParent(result, dsns, code, null);
 					}
 
 					@Override
 					public void onError(Exception ex) {
-						setError("連結學校時發生錯誤 : " + ex.getMessage());						
+						setError(R.string.add_child_error_connect_accessable);						
 					}
 				});
 
@@ -130,7 +150,7 @@ public class AddChildActivity extends Activity {
 	private void joinParent(ContractConnection connection, final String dsns,
 			String code, String relationship) {
 		if (StringUtil.isNullOrWhitespace(relationship))
-			relationship = "家長";
+			relationship = getString(R.string.add_child_default_relation);
 
 		DSRequest request = new DSRequest();
 		Element content = XmlUtil.createElement("Request");
@@ -143,7 +163,7 @@ public class AddChildActivity extends Activity {
 
 					@Override
 					public void onReceive(DSResponse result) {
-						setMessage("加入家長完成");
+						setMessage(R.string.add_child_add_parent_completed);
 						addApplicationRef(dsns);
 					}
 
@@ -155,9 +175,23 @@ public class AddChildActivity extends Activity {
 				}, new Cancelable());
 	}
 
-	private void addApplicationRef(String dsns) {
-		setMessage("儲存個人關聯學校中...");
+	private void addApplicationRef(String dsns) {		
 		
+		//如果該校已經存在的話應該就不用呼叫了
+		boolean contains = false;
+		for(Accessable a : Parent.getAccessables()){
+			if(a.getAccessPoint().equals(dsns)){
+				contains = true;
+				break;
+			}
+		}
+		
+		if(contains){
+			syncChildren();
+			return;
+		}
+		
+		setMessage(R.string.add_child_save_accessable);
 		DSRequest request = new DSRequest();
 		Element content = XmlUtil.createElement("Request");
 		Element applications = XmlUtil.addElement(content, "Applications");
@@ -166,15 +200,14 @@ public class AddChildActivity extends Activity {
 		XmlUtil.addElement(application, "Type", "dynpkg");
 		request.setContent(content);
 
-		ContractConnection greening = MainActivity.getConnectionHelper()
+		ContractConnection greening = Parent.getConnectionHelper()
 				.getGreening();
 		greening.sendAsyncRequest(Parent.SERVICE_ADD_APPLICATION_REF, request,
 				new OnReceiveListener<DSResponse>() {
 
 					@Override
 					public void onReceive(DSResponse result) {
-						setResult(RESULT_CHILD_ADDED);
-						finish();
+						syncAccessable();
 					}
 
 					@Override
@@ -183,26 +216,60 @@ public class AddChildActivity extends Activity {
 						if(ex instanceof DSAServerException){
 							DSAServerException dsaEx = (DSAServerException) ex;
 							if(dsaEx.getStatusMessage().contains("duplicate key value violates unique constraint")){
-								setResult(RESULT_CHILD_ADDED);
-								finish();
+								syncChildren();
 								return;
 							}								
 						}
 						
 						//setResult(RESULT_CHILD_ADDED);
-						setError("儲存個人關聯學校時發生錯誤");
+						setError(R.string.add_child_error_save_accessable);
 						//finish();
 					}
 				}, new Cancelable());
 	}
 	
-	private void setMessage(String message){
+	private void setMessage(int stringId){
 		mTxtMesg.setTextColor(Color.BLACK);
+		mTxtMesg.setText(stringId);		
+	}
+	
+	private void setError(int message){
+		mTxtMesg.setTextColor(Color.RED);
 		mTxtMesg.setText(message);		
 	}
 	
-	private void setError(String message){
-		mTxtMesg.setTextColor(Color.RED);
-		mTxtMesg.setText(message);		
+	private void syncAccessable(){
+		setMessage(R.string.add_child_sync_accessable);
+		Parent.getConnectionHelper().getAccessables(this, new OnReceiveListener<List<Accessable>>() {
+			
+			@Override
+			public void onReceive(List<Accessable> result) {
+				syncChildren();				
+			}
+			
+			@Override
+			public void onError(Exception ex) {
+				setError(R.string.add_child_error_sync_accessable);				
+			}
+		});
+	}
+	
+	private void syncChildren(){
+		setMessage(R.string.add_child_sync_children);
+		
+		ChildrenHelper helper = new ChildrenHelper(this, Parent.getConnectionHelper(), Parent.getAccessables());
+		helper.getChildren(new OnReceiveListener<Children>() {
+			
+			@Override
+			public void onReceive(Children result) {
+				setResult(RESULT_CHILD_ADDED);
+				finish();			
+			}
+			
+			@Override
+			public void onError(Exception ex) {
+				setError(R.string.add_child_error_sync_children);				
+			}
+		});
 	}
 }

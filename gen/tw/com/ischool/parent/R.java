@@ -335,20 +335,20 @@ containing a value of this type.
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f080005;
-        public static final int activity_vertical_margin=0x7f080006;
+        public static final int activity_horizontal_margin=0x7f070005;
+        public static final int activity_vertical_margin=0x7f070006;
         /**  for action bar tab 
          */
-        public static final int corner_radius=0x7f080008;
-        public static final int header_footer_left_right_padding=0x7f080003;
-        public static final int header_footer_top_bottom_padding=0x7f080004;
-        public static final int indicator_corner_radius=0x7f080001;
-        public static final int indicator_internal_padding=0x7f080002;
-        public static final int indicator_right_padding=0x7f080000;
-        public static final int navigation_drawer_width=0x7f080007;
-        public static final int tab_space=0x7f08000a;
-        public static final int tab_space_plus1=0x7f08000b;
-        public static final int tab_space_top=0x7f080009;
+        public static final int corner_radius=0x7f070008;
+        public static final int header_footer_left_right_padding=0x7f070003;
+        public static final int header_footer_top_bottom_padding=0x7f070004;
+        public static final int indicator_corner_radius=0x7f070001;
+        public static final int indicator_internal_padding=0x7f070002;
+        public static final int indicator_right_padding=0x7f070000;
+        public static final int navigation_drawer_width=0x7f070007;
+        public static final int tab_space=0x7f07000a;
+        public static final int tab_space_plus1=0x7f07000b;
+        public static final int tab_space_top=0x7f070009;
     }
     public static final class drawable {
         public static final int ab_background_textured_orange=0x7f020000;
@@ -397,165 +397,252 @@ containing a value of this type.
         public static final int demerit_b=0x7f02002b;
         public static final int demerit_c=0x7f02002c;
         public static final int discipline=0x7f02002d;
-        public static final int drawer_shadow=0x7f02002e;
-        public static final int gray_back_border=0x7f02002f;
-        public static final int ic_drawer=0x7f020030;
-        public static final int ic_launcher=0x7f020031;
-        public static final int ic_plusone_medium_off_client=0x7f020032;
-        public static final int ic_plusone_small_off_client=0x7f020033;
-        public static final int ic_plusone_standard_off_client=0x7f020034;
-        public static final int ic_plusone_tall_off_client=0x7f020035;
-        public static final int icon=0x7f020036;
-        public static final int indicator_arrow=0x7f020037;
-        public static final int indicator_bg_bottom=0x7f020038;
-        public static final int indicator_bg_top=0x7f020039;
-        public static final int info=0x7f02003a;
-        public static final int ischool_logo=0x7f02003b;
-        public static final int kid=0x7f02003c;
-        public static final int list_focused_orange=0x7f02003d;
-        public static final int list_pressed_orange=0x7f02003e;
-        public static final int menu_dropdown_panel_orange=0x7f02003f;
-        public static final int merit_a=0x7f020040;
-        public static final int merit_b=0x7f020041;
-        public static final int merit_c=0x7f020042;
-        public static final int no_photo=0x7f020043;
-        public static final int progress_bg_orange=0x7f020044;
-        public static final int progress_horizontal_orange=0x7f020045;
-        public static final int progress_primary_orange=0x7f020046;
-        public static final int progress_secondary_orange=0x7f020047;
-        public static final int qrcode=0x7f020048;
-        public static final int red_chair=0x7f020049;
-        public static final int selectable_background_orange=0x7f02004a;
-        public static final int spinner_ab_default_orange=0x7f02004b;
-        public static final int spinner_ab_disabled_orange=0x7f02004c;
-        public static final int spinner_ab_focused_orange=0x7f02004d;
-        public static final int spinner_ab_pressed_orange=0x7f02004e;
-        public static final int spinner_background_ab_orange=0x7f02004f;
-        public static final int tab_indicator_ab_orange=0x7f020050;
-        public static final int tab_selected_focused_orange=0x7f020051;
-        public static final int tab_selected_orange=0x7f020052;
-        public static final int tab_selected_pressed_orange=0x7f020053;
-        public static final int tab_unselected_focused_orange=0x7f020054;
-        public static final int tab_unselected_orange=0x7f020055;
-        public static final int tab_unselected_pressed_orange=0x7f020056;
-        public static final int test_paper=0x7f020057;
-        public static final int warning=0x7f020058;
+        public static final int down=0x7f02002e;
+        public static final int drawer_shadow=0x7f02002f;
+        public static final int eval_score=0x7f020030;
+        public static final int google=0x7f020031;
+        public static final int gray_back_border=0x7f020032;
+        public static final int gray_border=0x7f020033;
+        public static final int ic_drawer=0x7f020034;
+        public static final int ic_launcher=0x7f020035;
+        public static final int ic_plusone_medium_off_client=0x7f020036;
+        public static final int ic_plusone_small_off_client=0x7f020037;
+        public static final int ic_plusone_standard_off_client=0x7f020038;
+        public static final int ic_plusone_tall_off_client=0x7f020039;
+        public static final int icon=0x7f02003a;
+        public static final int indicator_arrow=0x7f02003b;
+        public static final int indicator_bg_bottom=0x7f02003c;
+        public static final int indicator_bg_top=0x7f02003d;
+        public static final int info=0x7f02003e;
+        public static final int ischool_logo=0x7f02003f;
+        public static final int kid=0x7f020040;
+        public static final int list_focused_orange=0x7f020041;
+        public static final int list_pressed_orange=0x7f020042;
+        public static final int menu_dropdown_panel_orange=0x7f020043;
+        public static final int merit_a=0x7f020044;
+        public static final int merit_b=0x7f020045;
+        public static final int merit_c=0x7f020046;
+        public static final int no_photo=0x7f020047;
+        public static final int progress_bg_orange=0x7f020048;
+        public static final int progress_horizontal_orange=0x7f020049;
+        public static final int progress_primary_orange=0x7f02004a;
+        public static final int progress_secondary_orange=0x7f02004b;
+        public static final int qrcode=0x7f02004c;
+        public static final int red_chair=0x7f02004d;
+        public static final int selectable_background_orange=0x7f02004e;
+        public static final int settings=0x7f02004f;
+        public static final int spinner_ab_default_orange=0x7f020050;
+        public static final int spinner_ab_disabled_orange=0x7f020051;
+        public static final int spinner_ab_focused_orange=0x7f020052;
+        public static final int spinner_ab_pressed_orange=0x7f020053;
+        public static final int spinner_background_ab_orange=0x7f020054;
+        public static final int tab_indicator_ab_orange=0x7f020055;
+        public static final int tab_selected_focused_orange=0x7f020056;
+        public static final int tab_selected_orange=0x7f020057;
+        public static final int tab_selected_pressed_orange=0x7f020058;
+        public static final int tab_unselected_focused_orange=0x7f020059;
+        public static final int tab_unselected_orange=0x7f02005a;
+        public static final int tab_unselected_pressed_orange=0x7f02005b;
+        public static final int test_paper=0x7f02005c;
+        public static final int up=0x7f02005d;
+        public static final int warning=0x7f02005e;
+        public static final int white_checked=0x7f02005f;
     }
     public static final class id {
-        public static final int both=0x7f070003;
-        public static final int btnCode=0x7f070014;
-        public static final int btnEnd=0x7f070016;
-        public static final int btnLogin=0x7f07002f;
-        public static final int btnOK=0x7f07003c;
-        public static final int btnScan=0x7f070012;
-        public static final int btnStart=0x7f070015;
-        public static final int calView=0x7f070041;
-        public static final int container=0x7f07002b;
-        public static final int container_all=0x7f07001a;
-        public static final int container_attendance_type=0x7f070017;
-        public static final int container_demeritA=0x7f070022;
-        public static final int container_demeritB=0x7f070024;
-        public static final int container_demeritC=0x7f070026;
-        public static final int container_discipline_type=0x7f070019;
-        public static final int container_meritA=0x7f07001c;
-        public static final int container_meritB=0x7f07001e;
-        public static final int container_meritC=0x7f070020;
-        public static final int container_total=0x7f070049;
-        public static final int disabled=0x7f070000;
-        public static final int drawer_layout=0x7f07002a;
-        public static final int emptyView=0x7f070043;
-        public static final int empty_view_discipline=0x7f070029;
-        public static final int empty_view_score=0x7f070056;
-        public static final int fl_inner=0x7f07006d;
-        public static final int flip=0x7f070008;
-        public static final int gridOthers=0x7f070046;
-        public static final int gridview=0x7f070009;
-        public static final int hybrid=0x7f070010;
-        public static final int imageView=0x7f07003d;
-        public static final int imgGot=0x7f07006b;
-        public static final int imgOtherIcon=0x7f070064;
-        public static final int imgPersonHead=0x7f07005a;
-        public static final int labelCredit=0x7f070067;
-        public static final int labelScore=0x7f070069;
-        public static final int layoutAttachments=0x7f070038;
-        public static final int layoutMessage=0x7f07003f;
-        public static final int layoutSemesScore=0x7f070011;
-        public static final int line=0x7f070036;
-        public static final int lvContact=0x7f070044;
-        public static final int lvDetail=0x7f070018;
-        public static final int lvMessage=0x7f070045;
-        public static final int lvReason=0x7f070028;
-        public static final int lvSchedule=0x7f070042;
-        public static final int lvScore=0x7f070055;
-        public static final int manualOnly=0x7f070004;
-        public static final int navigation_drawer=0x7f07002c;
-        public static final int none=0x7f07000c;
-        public static final int normal=0x7f07000d;
-        public static final int pager=0x7f070030;
-        public static final int pullDownFromTop=0x7f070005;
-        public static final int pullFromEnd=0x7f070002;
-        public static final int pullFromStart=0x7f070001;
-        public static final int pullUpFromBottom=0x7f070006;
-        public static final int pull_to_refresh_image=0x7f07006e;
-        public static final int pull_to_refresh_progress=0x7f07006f;
-        public static final int pull_to_refresh_sub_text=0x7f070071;
-        public static final int pull_to_refresh_text=0x7f070070;
-        public static final int rotate=0x7f070007;
-        public static final int satellite=0x7f07000e;
-        public static final int scrollview=0x7f07000b;
-        public static final int spinnerSemester=0x7f070048;
-        public static final int terrain=0x7f07000f;
-        public static final int textView=0x7f07006c;
-        public static final int textView1=0x7f07003e;
-        public static final int titleGot=0x7f07004a;
-        public static final int titleSep=0x7f07004b;
-        public static final int txtClassName=0x7f07005d;
-        public static final int txtContent=0x7f070037;
-        public static final int txtCountA=0x7f07005e;
-        public static final int txtCountAll=0x7f07001b;
-        public static final int txtCountB=0x7f070060;
-        public static final int txtCountC=0x7f070062;
-        public static final int txtCredit=0x7f070068;
-        public static final int txtDate=0x7f070058;
-        public static final int txtDemeritCountA=0x7f070023;
-        public static final int txtDemeritCountB=0x7f070025;
-        public static final int txtDemeritCountC=0x7f070027;
-        public static final int txtDeptOrSchool=0x7f070066;
-        public static final int txtDetail=0x7f070059;
-        public static final int txtFileName=0x7f070057;
-        public static final int txtFromSchool=0x7f070034;
-        public static final int txtFromUnit=0x7f070033;
-        public static final int txtGot=0x7f07004c;
-        public static final int txtIntern=0x7f070054;
-        public static final int txtLoginMessage=0x7f070040;
-        public static final int txtMeritCountA=0x7f07001d;
-        public static final int txtMeritCountB=0x7f07001f;
-        public static final int txtMeritCountC=0x7f070021;
-        public static final int txtMessage=0x7f070013;
-        public static final int txtNameA=0x7f07005f;
-        public static final int txtNameB=0x7f070061;
-        public static final int txtNameC=0x7f070063;
-        public static final int txtNecessary=0x7f07004e;
-        public static final int txtNecessaryDept=0x7f070050;
-        public static final int txtNecessarySchool=0x7f070052;
-        public static final int txtOtherTitle=0x7f070065;
-        public static final int txtParentCode=0x7f07003a;
-        public static final int txtPassword=0x7f07002e;
-        public static final int txtPersonName=0x7f07005b;
-        public static final int txtRelation=0x7f07003b;
-        public static final int txtSchool=0x7f070039;
-        public static final int txtSchoolName=0x7f07005c;
-        public static final int txtScore=0x7f07006a;
-        public static final int txtSign=0x7f070032;
-        public static final int txtStudy=0x7f07004d;
-        public static final int txtSubject=0x7f070031;
-        public static final int txtTime=0x7f070035;
-        public static final int txtUnnecessary=0x7f07004f;
-        public static final int txtUnnecessaryDept=0x7f070051;
-        public static final int txtUnnecessarySchool=0x7f070053;
-        public static final int txtUserName=0x7f07002d;
-        public static final int webLogin=0x7f070047;
-        public static final int webview=0x7f07000a;
+        public static final int both=0x7f080003;
+        public static final int btnCode=0x7f080014;
+        public static final int btnEnd=0x7f080016;
+        public static final int btnLogin=0x7f080030;
+        public static final int btnOK=0x7f08003d;
+        public static final int btnScan=0x7f080012;
+        public static final int btnStart=0x7f080015;
+        public static final int btnSwitchAccount=0x7f080046;
+        public static final int calView=0x7f080048;
+        public static final int container=0x7f08002c;
+        public static final int container_all=0x7f08001a;
+        public static final int container_attendance_type=0x7f080017;
+        public static final int container_demeritA=0x7f080022;
+        public static final int container_demeritB=0x7f080024;
+        public static final int container_demeritC=0x7f080026;
+        public static final int container_discipline_type=0x7f080019;
+        public static final int container_meritA=0x7f08001c;
+        public static final int container_meritB=0x7f08001e;
+        public static final int container_meritC=0x7f080020;
+        public static final int container_total=0x7f080058;
+        public static final int disabled=0x7f080004;
+        public static final int drawer_layout=0x7f08002b;
+        public static final int emptyView=0x7f08004a;
+        public static final int empty_view_discipline=0x7f080029;
+        public static final int empty_view_jh_eval_score=0x7f08004f;
+        public static final int empty_view_jh_semester_score=0x7f080053;
+        public static final int empty_view_score=0x7f080065;
+        public static final int empty_view_sh_eval_score=0x7f080056;
+        public static final int fl_inner=0x7f0800bd;
+        public static final int flip=0x7f08000a;
+        public static final int gridOthers=0x7f080055;
+        public static final int gridview=0x7f080000;
+        public static final int hybrid=0x7f08000c;
+        public static final int imageView=0x7f08003e;
+        public static final int imgAccountType=0x7f080066;
+        public static final int imgGot=0x7f080084;
+        public static final int imgImprove=0x7f080078;
+        public static final int imgOtherIcon=0x7f080075;
+        public static final int imgPersonHead=0x7f08006b;
+        public static final int labelCredit=0x7f080082;
+        public static final int labelScore=0x7f08007f;
+        public static final int labelTextScore=0x7f08007d;
+        public static final int layoutAttachments=0x7f080039;
+        public static final int layoutBtnSync=0x7f080043;
+        public static final int layoutEvalScore=0x7f08002a;
+        public static final int layoutExamScore=0x7f080087;
+        public static final int layoutMessage=0x7f080040;
+        public static final int layoutScore1=0x7f080088;
+        public static final int layoutScore10=0x7f0800ac;
+        public static final int layoutScore11=0x7f0800b0;
+        public static final int layoutScore12=0x7f0800b4;
+        public static final int layoutScore13=0x7f0800b8;
+        public static final int layoutScore2=0x7f08008c;
+        public static final int layoutScore3=0x7f080090;
+        public static final int layoutScore4=0x7f080094;
+        public static final int layoutScore5=0x7f080098;
+        public static final int layoutScore6=0x7f08009c;
+        public static final int layoutScore7=0x7f0800a0;
+        public static final int layoutScore8=0x7f0800a4;
+        public static final int layoutScore9=0x7f0800a8;
+        public static final int layoutSemesScore=0x7f080011;
+        public static final int layoutTextScore=0x7f08007c;
+        public static final int line=0x7f080037;
+        public static final int listView=0x7f08004e;
+        public static final int lvContact=0x7f08004b;
+        public static final int lvDetail=0x7f080018;
+        public static final int lvMessage=0x7f080054;
+        public static final int lvReason=0x7f080028;
+        public static final int lvSchedule=0x7f080049;
+        public static final int lvScore=0x7f080064;
+        public static final int lvSwitchAccount=0x7f080047;
+        public static final int manualOnly=0x7f080005;
+        public static final int navigation_drawer=0x7f08002d;
+        public static final int none=0x7f08000d;
+        public static final int normal=0x7f08000e;
+        public static final int pager=0x7f080031;
+        public static final int progressSync=0x7f080044;
+        public static final int pullDownFromTop=0x7f080006;
+        public static final int pullFromEnd=0x7f080007;
+        public static final int pullFromStart=0x7f080008;
+        public static final int pullUpFromBottom=0x7f080009;
+        public static final int pull_to_refresh_image=0x7f0800be;
+        public static final int pull_to_refresh_progress=0x7f0800bf;
+        public static final int pull_to_refresh_sub_text=0x7f0800c1;
+        public static final int pull_to_refresh_text=0x7f0800c0;
+        public static final int rotate=0x7f08000b;
+        public static final int satellite=0x7f08000f;
+        public static final int scrollview=0x7f080002;
+        public static final int spinnerExam=0x7f08004d;
+        public static final int spinnerSemester=0x7f08004c;
+        public static final int terrain=0x7f080010;
+        public static final int textView=0x7f0800bc;
+        public static final int textView1=0x7f08003f;
+        public static final int titleGot=0x7f080059;
+        public static final int titleSep=0x7f08005a;
+        public static final int txtAccount=0x7f080067;
+        public static final int txtBadCount=0x7f080050;
+        public static final int txtBtnSync=0x7f080045;
+        public static final int txtClassName=0x7f08006e;
+        public static final int txtContent=0x7f080038;
+        public static final int txtCountA=0x7f08006f;
+        public static final int txtCountAll=0x7f08001b;
+        public static final int txtCountB=0x7f080071;
+        public static final int txtCountC=0x7f080073;
+        public static final int txtCourseLearnScore=0x7f080052;
+        public static final int txtCredit=0x7f080086;
+        public static final int txtDate=0x7f080069;
+        public static final int txtDemeritCountA=0x7f080023;
+        public static final int txtDemeritCountB=0x7f080025;
+        public static final int txtDemeritCountC=0x7f080027;
+        public static final int txtDeptOrSchool=0x7f080085;
+        public static final int txtDetail=0x7f08006a;
+        public static final int txtExamName1=0x7f080089;
+        public static final int txtExamName10=0x7f0800ad;
+        public static final int txtExamName11=0x7f0800b1;
+        public static final int txtExamName12=0x7f0800b5;
+        public static final int txtExamName13=0x7f0800b9;
+        public static final int txtExamName2=0x7f08008d;
+        public static final int txtExamName3=0x7f080091;
+        public static final int txtExamName4=0x7f080095;
+        public static final int txtExamName5=0x7f080099;
+        public static final int txtExamName6=0x7f08009d;
+        public static final int txtExamName7=0x7f0800a1;
+        public static final int txtExamName8=0x7f0800a5;
+        public static final int txtExamName9=0x7f0800a9;
+        public static final int txtExamScore1=0x7f08008a;
+        public static final int txtExamScore10=0x7f0800ae;
+        public static final int txtExamScore11=0x7f0800b2;
+        public static final int txtExamScore12=0x7f0800b6;
+        public static final int txtExamScore13=0x7f0800ba;
+        public static final int txtExamScore2=0x7f08008e;
+        public static final int txtExamScore3=0x7f080092;
+        public static final int txtExamScore4=0x7f080096;
+        public static final int txtExamScore5=0x7f08009a;
+        public static final int txtExamScore6=0x7f08009e;
+        public static final int txtExamScore7=0x7f0800a2;
+        public static final int txtExamScore8=0x7f0800a6;
+        public static final int txtExamScore9=0x7f0800aa;
+        public static final int txtFileName=0x7f080068;
+        public static final int txtFromSchool=0x7f080035;
+        public static final int txtFromUnit=0x7f080034;
+        public static final int txtGot=0x7f08005b;
+        public static final int txtImprove1=0x7f08008b;
+        public static final int txtImprove10=0x7f0800af;
+        public static final int txtImprove11=0x7f0800b3;
+        public static final int txtImprove12=0x7f0800b7;
+        public static final int txtImprove13=0x7f0800bb;
+        public static final int txtImprove2=0x7f08008f;
+        public static final int txtImprove3=0x7f080093;
+        public static final int txtImprove4=0x7f080097;
+        public static final int txtImprove5=0x7f08009b;
+        public static final int txtImprove6=0x7f08009f;
+        public static final int txtImprove7=0x7f0800a3;
+        public static final int txtImprove8=0x7f0800a7;
+        public static final int txtImprove9=0x7f0800ab;
+        public static final int txtIntern=0x7f080063;
+        public static final int txtLearnDomainScore=0x7f080051;
+        public static final int txtLoginMessage=0x7f080041;
+        public static final int txtLoginName=0x7f080042;
+        public static final int txtMeritCountA=0x7f08001d;
+        public static final int txtMeritCountB=0x7f08001f;
+        public static final int txtMeritCountC=0x7f080021;
+        public static final int txtMessage=0x7f080013;
+        public static final int txtNameA=0x7f080070;
+        public static final int txtNameB=0x7f080072;
+        public static final int txtNameC=0x7f080074;
+        public static final int txtNecessary=0x7f08005d;
+        public static final int txtNecessaryDept=0x7f08005f;
+        public static final int txtNecessarySchool=0x7f080061;
+        public static final int txtOtherTitle=0x7f080076;
+        public static final int txtParentCode=0x7f08003b;
+        public static final int txtPassword=0x7f08002f;
+        public static final int txtPersonName=0x7f08006c;
+        public static final int txtRegularScore=0x7f080079;
+        public static final int txtRelation=0x7f08003c;
+        public static final int txtSchool=0x7f08003a;
+        public static final int txtSchoolName=0x7f08006d;
+        public static final int txtScore=0x7f080083;
+        public static final int txtSign=0x7f080033;
+        public static final int txtStudy=0x7f08005c;
+        public static final int txtSubject=0x7f080032;
+        public static final int txtTextScore=0x7f08007e;
+        public static final int txtTime=0x7f080036;
+        public static final int txtTitle=0x7f080081;
+        public static final int txtTotalScore=0x7f08007b;
+        public static final int txtUauslScore=0x7f08007a;
+        public static final int txtUnnecessary=0x7f08005e;
+        public static final int txtUnnecessaryDept=0x7f080060;
+        public static final int txtUnnecessarySchool=0x7f080062;
+        public static final int txtUserName=0x7f08002e;
+        public static final int txtWeight=0x7f080077;
+        public static final int txtWeightScore=0x7f080080;
+        public static final int webLogin=0x7f080057;
+        public static final int webview=0x7f080001;
     }
     public static final class integer {
         public static final int google_play_services_version=0x7f0b0000;
@@ -565,31 +652,43 @@ containing a value of this type.
         public static final int activity_add_child=0x7f030001;
         public static final int activity_attendance=0x7f030002;
         public static final int activity_discipline=0x7f030003;
-        public static final int activity_home=0x7f030004;
-        public static final int activity_login=0x7f030005;
-        public static final int activity_main=0x7f030006;
-        public static final int activity_message_content=0x7f030007;
-        public static final int activity_parent_code=0x7f030008;
-        public static final int activity_parent_login=0x7f030009;
-        public static final int activity_sems_score=0x7f03000a;
-        public static final int fragment_calendar=0x7f03000b;
-        public static final int fragment_contact=0x7f03000c;
-        public static final int fragment_message=0x7f03000d;
-        public static final int fragment_navigation_drawer=0x7f03000e;
-        public static final int fragment_others=0x7f03000f;
-        public static final int fragment_signin=0x7f030010;
-        public static final int fragment_student_score=0x7f030011;
-        public static final int item_attachments=0x7f030012;
-        public static final int item_attendance=0x7f030013;
-        public static final int item_contact_person=0x7f030014;
-        public static final int item_contact_school=0x7f030015;
-        public static final int item_discipline=0x7f030016;
-        public static final int item_grid_others=0x7f030017;
-        public static final int item_message=0x7f030018;
-        public static final int item_score=0x7f030019;
-        public static final int item_spinner=0x7f03001a;
-        public static final int pull_to_refresh_header_horizontal=0x7f03001b;
-        public static final int pull_to_refresh_header_vertical=0x7f03001c;
+        public static final int activity_eval_score=0x7f030004;
+        public static final int activity_home=0x7f030005;
+        public static final int activity_login=0x7f030006;
+        public static final int activity_main=0x7f030007;
+        public static final int activity_message_content=0x7f030008;
+        public static final int activity_parent_code=0x7f030009;
+        public static final int activity_parent_login=0x7f03000a;
+        public static final int activity_sems_score=0x7f03000b;
+        public static final int activity_settings=0x7f03000c;
+        public static final int activity_switch_account=0x7f03000d;
+        public static final int fragment_calendar=0x7f03000e;
+        public static final int fragment_contact=0x7f03000f;
+        public static final int fragment_jh_eval_score=0x7f030010;
+        public static final int fragment_jh_semsester_score=0x7f030011;
+        public static final int fragment_message=0x7f030012;
+        public static final int fragment_navigation_drawer=0x7f030013;
+        public static final int fragment_others=0x7f030014;
+        public static final int fragment_sh_eval_score=0x7f030015;
+        public static final int fragment_signin=0x7f030016;
+        public static final int fragment_student_score=0x7f030017;
+        public static final int item_account=0x7f030018;
+        public static final int item_attachments=0x7f030019;
+        public static final int item_attendance=0x7f03001a;
+        public static final int item_contact_person=0x7f03001b;
+        public static final int item_contact_school=0x7f03001c;
+        public static final int item_discipline=0x7f03001d;
+        public static final int item_grid_others=0x7f03001e;
+        public static final int item_jh_eval_score=0x7f03001f;
+        public static final int item_jh_eval_score_domain=0x7f030020;
+        public static final int item_jh_sems_score=0x7f030021;
+        public static final int item_jh_sems_score_domain=0x7f030022;
+        public static final int item_message=0x7f030023;
+        public static final int item_score=0x7f030024;
+        public static final int item_sh_eval_score=0x7f030025;
+        public static final int item_spinner=0x7f030026;
+        public static final int pull_to_refresh_header_horizontal=0x7f030027;
+        public static final int pull_to_refresh_header_vertical=0x7f030028;
     }
     public static final class menu {
         public static final int main=0x7f0d0000;
@@ -600,26 +699,37 @@ containing a value of this type.
     public static final class string {
         public static final int ACCOUNT_LABEL=0x7f090022;
         public static final int action_switch_user=0x7f09003f;
+        public static final int add_child_add_parent=0x7f090088;
+        public static final int add_child_add_parent_completed=0x7f090087;
+        public static final int add_child_connect_accessable=0x7f090089;
+        public static final int add_child_default_relation=0x7f09008c;
+        public static final int add_child_error_connect_accessable=0x7f09008a;
+        public static final int add_child_error_invalid_qrcode=0x7f09008b;
+        public static final int add_child_error_save_accessable=0x7f090086;
+        public static final int add_child_error_sync_accessable=0x7f09008d;
+        public static final int add_child_error_sync_children=0x7f090083;
+        public static final int add_child_save_accessable=0x7f090085;
+        public static final int add_child_sync_accessable=0x7f09008e;
+        public static final int add_child_sync_children=0x7f090084;
         /**  add child activity 
          */
-        public static final int add_child_with_code=0x7f09007e;
-        public static final int add_child_with_code_confirm=0x7f09007f;
-        public static final int add_child_without_code=0x7f090080;
-        public static final int add_child_without_code_confirm=0x7f090081;
-        public static final int alert_internet_disconnect=0x7f090050;
+        public static final int add_child_with_code=0x7f09007f;
+        public static final int add_child_with_code_confirm=0x7f090080;
+        public static final int add_child_without_code=0x7f090081;
+        public static final int add_child_without_code_confirm=0x7f090082;
+        public static final int alert_internet_disconnect=0x7f090051;
         /**  Alert 
- Alert 
          */
-        public static final int alert_title=0x7f09004f;
+        public static final int alert_title=0x7f090050;
         public static final int app_name=0x7f090020;
         public static final int app_name_account=0x7f090021;
-        public static final int attendance_all=0x7f09005d;
-        public static final int attendance_date=0x7f09005a;
-        public static final int attendance_empty_list=0x7f09005f;
-        public static final int attendance_from=0x7f09005b;
-        public static final int attendance_loading=0x7f09005e;
-        public static final int attendance_unlimit=0x7f090059;
-        public static final int attendance_until=0x7f09005c;
+        public static final int attendance_all=0x7f09005e;
+        public static final int attendance_date=0x7f09005b;
+        public static final int attendance_empty_list=0x7f090060;
+        public static final int attendance_from=0x7f09005c;
+        public static final int attendance_loading=0x7f09005f;
+        public static final int attendance_unlimit=0x7f09005a;
+        public static final int attendance_until=0x7f09005d;
         /**   Title for notification shown when GooglePlayServices needs to be
         enabled for a application to work. [CHAR LIMIT=70] 
          */
@@ -643,29 +753,27 @@ containing a value of this type.
         [CHAR LIMIT=70] 
          */
         public static final int auth_client_using_bad_version_title=0x7f09001a;
-        public static final int btn_absense=0x7f09004a;
-        public static final int btn_discipline=0x7f090049;
-        public static final int btn_eval_score=0x7f09004c;
+        public static final int btn_absense=0x7f09004b;
+        public static final int btn_discipline=0x7f09004a;
+        public static final int btn_eval_score=0x7f09004d;
         /**  other fragment 
- other fragment 
          */
-        public static final int btn_homework=0x7f090048;
-        public static final int btn_parent_code=0x7f09004e;
-        public static final int btn_sem_score=0x7f09004b;
-        public static final int btn_store=0x7f09004d;
+        public static final int btn_homework=0x7f090049;
+        public static final int btn_parent_code=0x7f09004f;
+        public static final int btn_sem_score=0x7f09004c;
+        public static final int btn_store=0x7f09004e;
         /**  calendar fragment 
- calendar fragment 
          */
-        public static final int calendar_empty=0x7f090056;
-        public static final int cancel=0x7f090054;
+        public static final int calendar_empty=0x7f090057;
+        public static final int cancel=0x7f090055;
         public static final int close=0x7f090047;
-        public static final int code_button_ok=0x7f090085;
-        public static final int code_hint_input_code=0x7f090083;
-        public static final int code_hint_input_relation=0x7f090084;
+        public static final int code_button_ok=0x7f090092;
+        public static final int code_hint_input_code=0x7f090090;
+        public static final int code_hint_input_relation=0x7f090091;
         /**  parent code activity 
          */
-        public static final int code_hint_input_school=0x7f090082;
-        public static final int code_info_message=0x7f090086;
+        public static final int code_hint_input_school=0x7f09008f;
+        public static final int code_info_message=0x7f090093;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -737,31 +845,50 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f090019;
-        public static final int confirm=0x7f090053;
-        public static final int discipline_all=0x7f090064;
-        public static final int discipline_date=0x7f090061;
-        public static final int discipline_demeritA=0x7f090069;
-        public static final int discipline_demeritB=0x7f09006a;
-        public static final int discipline_demeritC=0x7f09006b;
-        public static final int discipline_empty_list=0x7f09006c;
-        public static final int discipline_from=0x7f090062;
-        public static final int discipline_loading=0x7f090065;
-        public static final int discipline_meritA=0x7f090066;
-        public static final int discipline_meritB=0x7f090067;
-        public static final int discipline_meritC=0x7f090068;
+        public static final int confirm=0x7f090054;
+        public static final int discipline_all=0x7f090065;
+        public static final int discipline_date=0x7f090062;
+        public static final int discipline_demeritA=0x7f09006a;
+        public static final int discipline_demeritB=0x7f09006b;
+        public static final int discipline_demeritC=0x7f09006c;
+        public static final int discipline_empty_list=0x7f09006d;
+        public static final int discipline_from=0x7f090063;
+        public static final int discipline_loading=0x7f090066;
+        public static final int discipline_meritA=0x7f090067;
+        public static final int discipline_meritB=0x7f090068;
+        public static final int discipline_meritC=0x7f090069;
         /**  student discipline activity 
- student discipline activity 
          */
-        public static final int discipline_unlimit=0x7f090060;
-        public static final int discipline_until=0x7f090063;
+        public static final int discipline_unlimit=0x7f090061;
+        public static final int discipline_until=0x7f090064;
         public static final int empty=0x7f090039;
         public static final int error_empty=0x7f090027;
         public static final int error_login=0x7f090028;
+        /**  gcm notification 
+         */
+        public static final int gcm_title=0x7f09009e;
         public static final int hello_world=0x7f090038;
         /**  contact fragment 
- contact fragment 
          */
-        public static final int homeroom_teacher=0x7f090057;
+        public static final int homeroom_teacher=0x7f090058;
+        public static final int jh_eval_score_domain_weight_score=0x7f0900ac;
+        public static final int jh_eval_score_empty_list=0x7f0900ad;
+        public static final int jh_eval_score_regular=0x7f0900a9;
+        public static final int jh_eval_score_total=0x7f0900ab;
+        public static final int jh_eval_score_usual=0x7f0900aa;
+        /**  eval score jh fragment 
+         */
+        public static final int jh_eval_score_weight=0x7f0900a8;
+        public static final int jh_semester_score_CourseLearnScore=0x7f0900a0;
+        /**  fragment jh semester score 
+         */
+        public static final int jh_semester_score_LearnDomainScore=0x7f09009f;
+        public static final int jh_semester_score_bad_count=0x7f0900a1;
+        public static final int jh_semester_score_empty_list=0x7f0900a6;
+        public static final int jh_semester_score_semester_loading=0x7f0900a3;
+        public static final int jh_semester_score_semester_temp=0x7f0900a2;
+        public static final int jh_semester_score_semester_textscore=0x7f0900a5;
+        public static final int jh_semester_score_semester_weight=0x7f0900a4;
         public static final int loading=0x7f090040;
         public static final int loading_message=0x7f090041;
         public static final int login=0x7f090026;
@@ -785,10 +912,13 @@ containing a value of this type.
         public static final int login_switch_title=0x7f090031;
         /**  message content activity 
          */
-        public static final int message_content_attachments=0x7f090088;
-        public static final int message_content_downloading=0x7f090089;
-        public static final int no=0x7f090052;
-        public static final int progress_title=0x7f090055;
+        public static final int message_content_attachments=0x7f090095;
+        public static final int message_content_downloading=0x7f090096;
+        /**  message fragment 
+         */
+        public static final int message_empty_list=0x7f090048;
+        public static final int no=0x7f090053;
+        public static final int progress_title=0x7f090056;
         /**  Just use standard Pull Down String when pulling up. These can be set for languages which require it 
  Just use standard Pull Down String when pulling up. These can be set for languages which require it 
          */
@@ -798,45 +928,57 @@ containing a value of this type.
         public static final int pull_to_refresh_pull_label=0x7f090000;
         public static final int pull_to_refresh_refreshing_label=0x7f090002;
         public static final int pull_to_refresh_release_label=0x7f090001;
-        public static final int score_credit=0x7f090078;
-        public static final int score_empty_list=0x7f09007b;
-        public static final int score_got=0x7f09006f;
-        public static final int score_intern=0x7f090076;
-        public static final int score_loading=0x7f090079;
-        public static final int score_loading_semester=0x7f09007a;
-        public static final int score_necessary=0x7f090070;
-        public static final int score_necessary_dept=0x7f090071;
-        public static final int score_necessary_school=0x7f090072;
+        public static final int score_credit=0x7f090079;
+        public static final int score_empty_list=0x7f09007c;
+        public static final int score_got=0x7f090070;
+        public static final int score_intern=0x7f090077;
+        public static final int score_loading=0x7f09007a;
+        public static final int score_loading_semester=0x7f09007b;
+        public static final int score_necessary=0x7f090071;
+        public static final int score_necessary_dept=0x7f090072;
+        public static final int score_necessary_school=0x7f090073;
         /**  student score activity 
- student score activity 
          */
-        public static final int score_schoolyear=0x7f09006d;
-        public static final int score_score=0x7f090077;
-        public static final int score_semester=0x7f09006e;
-        public static final int score_unnecessary=0x7f090073;
-        public static final int score_unnecessary_dept=0x7f090074;
-        public static final int score_unnecessary_school=0x7f090075;
+        public static final int score_schoolyear=0x7f09006e;
+        public static final int score_score=0x7f090078;
+        public static final int score_semester=0x7f09006f;
+        public static final int score_unnecessary=0x7f090074;
+        public static final int score_unnecessary_dept=0x7f090075;
+        public static final int score_unnecessary_school=0x7f090076;
+        public static final int settings_login_name=0x7f090098;
+        public static final int settings_switch_account=0x7f09009b;
+        public static final int settings_sync_account=0x7f090099;
+        public static final int settings_sync_ing=0x7f09009a;
         public static final int slash=0x7f09003a;
+        public static final int switch_account_hint=0x7f09009d;
         public static final int tab_calendar=0x7f09003e;
         public static final int tab_contact=0x7f09003c;
         public static final int tab_message=0x7f09003b;
         public static final int tab_others=0x7f09003d;
         /**  attendance activity 
- attendance activity 
          */
-        public static final int title_activity_abs_sems=0x7f090058;
-        public static final int title_activity_add_child=0x7f090087;
+        public static final int title_activity_abs_sems=0x7f090059;
+        public static final int title_activity_add_child=0x7f090094;
         public static final int title_activity_attendance=0x7f090044;
         public static final int title_activity_discipline=0x7f090045;
+        /**  eval score activity 
+         */
+        public static final int title_activity_eval_score=0x7f0900a7;
         /**  Loign Activity 
  Loign Activity 
          */
         public static final int title_activity_login=0x7f090023;
         public static final int title_activity_message_content=0x7f090043;
-        public static final int title_activity_parent_code=0x7f09007d;
-        public static final int title_activity_parent_login=0x7f09007c;
+        public static final int title_activity_parent_code=0x7f09007e;
+        public static final int title_activity_parent_login=0x7f09007d;
         public static final int title_activity_sems_score=0x7f090046;
-        public static final int yes=0x7f090051;
+        /**  settings activity 
+         */
+        public static final int title_activity_settings=0x7f090097;
+        /**  switch account activity 
+         */
+        public static final int title_activity_switch_account=0x7f09009c;
+        public static final int yes=0x7f090052;
     }
     public static final class style {
         public static final int ActionBar_Solid_Orange=0x7f0c0003;
@@ -914,6 +1056,7 @@ containing a value of this type.
     public static final class xml {
         public static final int account_preferences=0x7f050000;
         public static final int authenticator=0x7f050001;
+        public static final int progress=0x7f050002;
     }
     public static final class styleable {
         /** Attributes that can be used with a AdsAttrs.

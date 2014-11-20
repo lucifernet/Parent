@@ -1,6 +1,7 @@
 package tw.com.ischool.parent.tabs.message;
 
 import ischool.dsa.utility.XmlHelper;
+import ischool.dsa.utility.XmlUtil;
 import ischool.utilities.StringUtil;
 
 import java.text.ParseException;
@@ -21,7 +22,8 @@ public class Message {
 	private Calendar mTimestamp;
 	private String mTimeStampString;
 	private boolean mDidRead;
-
+	private Element mRawElement;
+	
 	public Message(Cursor cursor) {
 		mId = cursor.getString(cursor.getColumnIndex(MessageHelper.COLUMN_ID));
 		mRawContent = cursor.getString(cursor
@@ -52,10 +54,14 @@ public class Message {
 	}
 
 	public Element getRawElement() {
+		if(mRawElement != null)
+			return mRawElement;
+		
 		if (StringUtil.isNullOrWhitespace(mRawContent))
 			return null;
 		try {
-			return XmlHelper.parseXml(mRawContent);
+			mRawElement = XmlHelper.parseXml(mRawContent);
+			return mRawElement;
 		} catch (Exception ex) {
 			return null;
 		}
@@ -97,5 +103,22 @@ public class Message {
 		}
 
 		return mTimestamp;
+	}
+
+	public String getSubject() {
+		Element raw = getRawElement();
+		Element content = XmlUtil.selectElement(raw, "Content");
+		Element contentMessage = XmlUtil.selectElement(content, "Message");
+		String subject = XmlUtil.getElementText(contentMessage, "Subject");
+		return subject;
+	}
+
+	public String getFromSchool() {
+		Element raw = getRawElement();
+		Element content = XmlUtil.selectElement(raw, "Content");
+		Element contentMessage = XmlUtil.selectElement(content, "Message");
+		Element from = XmlUtil.selectElement(contentMessage, "From");
+		String school = XmlUtil.getElementText(from, "School");
+		return school;
 	}
 }

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0099CC"
+    android:minHeight="30dp"
+    android:orientation="vertical"
+    android:padding="5dp" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:contentDescription="@string/empty"
+            android:src="@android:drawable/ic_menu_compass" />
+
+        <TextView
+            android:id="@+id/txtSubject"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="3dp"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/labelCredit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/jh_semester_score_semester_weight"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/txtWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/labelScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/score_score"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/txtScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:textColor="@android:color/white" />
+
+        <ImageView
+            android:id="@+id/imgGot"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:contentDescription="@string/empty"
+            android:paddingLeft="3dp"
+            android:src="@drawable/white_checked" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutTextScore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:paddingLeft="18dp" >
+
+        <TextView
+            android:id="@+id/labelTextScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/jh_semester_score_semester_textscore"
+            android:textColor="@android:color/white"
+            android:textStyle="italic|bold" />
+
+        <TextView
+            android:id="@+id/txtTextScore"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_weight="1"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+</LinearLayout>

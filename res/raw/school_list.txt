@@ -1,183 +1,1088 @@
 [
-{ schoolName: '台大EMBA', dsnsName: 'emba.ntu.edu.tw', city: '台北市' }
-, { schoolName: '台大EMBA測試學校', dsnsName: 'test.emba.ntu.edu.tw', city: '台北市' }
-, { schoolName: '台中市中港高中', dsnsName: 'cgjh.tcc.edu.tw', city: '台中市' }
-, { schoolName: '台中市立大里高中', dsnsName: 'dljh.tcc.edu.tw', city: '台中市' }
-, { schoolName: '台中市立大里高中國中部', dsnsName: 'j.dljh.tcc.edu.tw', city: '台中市' }
-, { schoolName: '台中市立惠文高中', dsnsName: 'h.hwsh.tc.edu.tw', city: '台中市' }
-, { schoolName: '台中市立惠文高中國中部', dsnsName: 'j.hwsh.tc.edu.tw', city: '台中市' }
-, { schoolName: '台中市明德女中', dsnsName: 'mdhs.tc.edu.tw', city: '台中市' }
-, { schoolName: '台中市明德女中進校', dsnsName: 'n.mdhs.tc.edu.tw', city: '台中市' }
-, { schoolName: '台中市青年高中', dsnsName: 'ysjh.tcc.edu.tw', city: '台中市' }
-, { schoolName: '台中市爽文國中', dsnsName: 'swjh.tcc.edu.tw', city: '台中市' }
-, { schoolName: '台中市新民高中', dsnsName: 'shinmin.tc.edu.tw', city: '台中市' }
-, { schoolName: '台中市新民高中進校', dsnsName: 'n.shinmin.tc.edu.tw', city: '台中市' }
-, { schoolName: '台北市士林高商', dsnsName: 'slhs.tp.edu.tw', city: '台北市' }
-, { schoolName: '台北市私立薇閣中學高中國際部', dsnsName: 'wghs.tp.edu.tw', city: '台北市' }
-, { schoolName: '台北市南港高工', dsnsName: 'nkhs.tp.edu.tw', city: '台北市' }
-, { schoolName: '台北市南港高工夜間部', dsnsName: 'n.nkhs.tp.edu.tw', city: '台北市' }
-, { schoolName: '台南市崑山中學', dsnsName: 'kssh.tn.edu.tw', city: '台南市' }
-, { schoolName: '台南市崑山中學國中部', dsnsName: 'j.kssh.tn.edu.tw', city: '台南市' }
-, { schoolName: '台南市崑山中學進校', dsnsName: 'n.kssh.tn.edu.tw', city: '台南市' }
-, { schoolName: '高雄市立一甲國中', dsnsName: 'yjm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立七賢國中', dsnsName: 'chihjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立三民國中', dsnsName: 'smjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立大仁國中', dsnsName: 'tjjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立大社國中', dsnsName: 'dam.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立大洲國中', dsnsName: 'dz.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立大義國中', dsnsName: 'dyjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立大寮國中', dsnsName: 'dlm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立大樹國中', dsnsName: 'dsm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立大灣國中', dsnsName: 'dwm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立小港國中', dsnsName: 'hkjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立中山國中', dsnsName: 'csjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立中正高中', dsnsName: 'cchs.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立中正高中附設國中部', dsnsName: 'j.cchs.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立中庄國中', dsnsName: 'zzm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立中芸國中', dsnsName: 'zym.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立中崙國中', dsnsName: 'zlm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立五甲國中', dsnsName: 'wzm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立五福國中', dsnsName: 'wfjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立仁武高中附設國中', dsnsName: 'j.rwm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立內門國中', dsnsName: 'nmm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立六龜高中_試用中', dsnsName: 'h.lgm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立六龜高中附設國中', dsnsName: 'j.lgm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立文山高中附設國中', dsnsName: 'j.wsm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立右昌國中', dsnsName: 'yocjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立左營國中', dsnsName: 'tyjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立正興國中', dsnsName: 'chehjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立民族國中', dsnsName: 'mtjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立永安國中', dsnsName: 'yam.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立田寮國中', dsnsName: 'tia.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立甲仙國中', dsnsName: 'jxm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立立德國中', dsnsName: 'ltjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立光華國中', dsnsName: 'khjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立杉林國中', dsnsName: 'slm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立那瑪夏國中', dsnsName: 'sm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立岡山國中', dsnsName: 'gsm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立忠孝國中', dsnsName: 'zxm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立明華國中', dsnsName: 'mhjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立明義國中', dsnsName: 'myjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立林園高中附設國中', dsnsName: 'j.ly.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立阿蓮國中', dsnsName: 'alm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立青年國中', dsnsName: 'qnm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立前金國中', dsnsName: 'ccjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立前峰國中', dsnsName: 'qfm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立前鎮國中', dsnsName: 'qzjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立南隆國中', dsnsName: 'nl.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立後勁國中', dsnsName: 'hpjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立美濃國中', dsnsName: 'mnm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立苓雅國中', dsnsName: 'lyjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立英明國中', dsnsName: 'inmjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立茂林國中', dsnsName: 'ml.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立茄萣國中', dsnsName: 'qdm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立桃源國中', dsnsName: 'ty.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立國昌國中', dsnsName: 'kcjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立梓官國中', dsnsName: 'zgm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立蚵寮國中', dsnsName: 'klm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立鳥松國中', dsnsName: 'nsm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立湖內國中', dsnsName: 'hn.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立陽明國中', dsnsName: 'ymjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立圓富國中', dsnsName: 'yfm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立新興高中', dsnsName: 'hhhs.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立新興高中國中部', dsnsName: 'j.hhhs.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立楠梓國中', dsnsName: 'ntjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立溪埔國中', dsnsName: 'xpm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立獅甲國中', dsnsName: 'scjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立瑞祥高中', dsnsName: 'rssh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立瑞祥高中高中部_試用中', dsnsName: 'h.rssh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立瑞豐國中', dsnsName: 'rfjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立路竹高中附設國中', dsnsName: 'j.lchs.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立鼎金國中', dsnsName: 'djjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立鼓山高中高中部', dsnsName: 'h.kusjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立鼓山國中', dsnsName: 'kusjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立嘉興國中', dsnsName: 'jsm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立壽山國中', dsnsName: 'ssjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立旗山國中', dsnsName: 'csj.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立旗津國中', dsnsName: 'cjjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立福山國中', dsnsName: 'fsjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立福誠高中附設國中', dsnsName: 'j.ftm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立福誠高中高中部_試用中', dsnsName: 'h.ftm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立翠屏國中小國中部', dsnsName: 'j.tpjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立鳳山國中', dsnsName: 'fsm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立鳳甲國中', dsnsName: 'fjm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立鳳西國中', dsnsName: 'fxm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立鳳林國中', dsnsName: 'fljh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立潮寮國中', dsnsName: 'tlm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立橋頭國中', dsnsName: 'qtm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立燕巢國中', dsnsName: 'ycm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立興仁國中', dsnsName: 'hjjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立餐旅國中', dsnsName: 'nkhc.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立龍肚國中', dsnsName: 'ldm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立龍華國中', dsnsName: 'lhjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立彌陀國中', dsnsName: 'mtm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立寶來國中', dsnsName: 'blm.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市立鹽埕國中', dsnsName: 'yacjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市私立大榮高中_試用中', dsnsName: 'h.dystcs.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市私立大榮高中國中部', dsnsName: 'j.dystcs.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市私立正義高中附設國中', dsnsName: 'j.cysh.khc.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市私立立志高中國中部', dsnsName: 'j.lcvs.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市私立明誠中學國中部', dsnsName: 'j.mcsh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市私立復華高中國中部', dsnsName: 'j.fhhs.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市私立普門中學附設國中', dsnsName: 'j.pmsh.khc.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市私立義大國際高中附設國中', dsnsName: 'j.isis.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市私立道明中學國中部', dsnsName: 'j.dmhs.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市私立樂育高中附設國中', dsnsName: 'j.lysh.khc.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市私立優佳國中', dsnsName: 'kivamjh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市高苑工商', dsnsName: 'kyvs.ks.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市高苑工商進校', dsnsName: 'n.kyvs.ks.edu.tw', city: '高雄市' }
-, { schoolName: '高雄市高雄高商進校', dsnsName: 'n.ksvcs.kh.edu.tw', city: '高雄市' }
-, { schoolName: '高雄測試國中', dsnsName: 'test.kh.edu.tw', city: '高雄市' }
-, { schoolName: '國立大湖農工', dsnsName: 'thvs.mlc.edu.tw', city: '苗栗縣' }
-, { schoolName: '國立中山大學附屬國光高級中學高中部_試用中', dsnsName: 'h.kksh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '國立中山附中 (國立中山大學附屬國光高級中學國中部)', dsnsName: 'j.kksh.kh.edu.tw', city: '高雄市' }
-, { schoolName: '國立北斗家商', dsnsName: 'pthc.chc.edu.tw', city: '雲林縣' }
-, { schoolName: '國立員林家商', dsnsName: 'ylhcvs.chc.edu.tw', city: '彰化縣' }
-, { schoolName: '國立員林家商進修學校', dsnsName: 'n.ylhcvs.chc.edu.tw', city: '彰化縣' }
-, { schoolName: '國立高師大附中', dsnsName: 'j.nknush.kh.edu.tw', city: '高雄市' }
-, { schoolName: '國立高雄師大附中', dsnsName: 'nknush.kh.edu.tw', city: '高雄市' }
-, { schoolName: '國立彰化師大附屬高工', dsnsName: 'sivs.chc.edu.tw', city: '彰化縣' }
-, { schoolName: '國立彰化師大附屬高工進校', dsnsName: 'n.sivs.chc.edu.tw', city: '彰化縣' }
-, { schoolName: '國立彰化高商', dsnsName: 'chsc.chc.edu.tw', city: '彰化縣' }
-, { schoolName: '基隆市光隆家商', dsnsName: 'klhcvs.kl.edu.tw', city: '基隆市' }
-, { schoolName: '基隆市光隆家商進校', dsnsName: 'n.klhcvs.kl.edu.tw', city: '基隆市' }
-, { schoolName: '新北市康橋雙語實驗高中_高中部', dsnsName: 'h.kcbs.ntpc.edu.tw', city: '新北市' }
-, { schoolName: '新北市康橋雙語實驗高中_國中部', dsnsName: 'j.kcbs.ntpc.edu.tw', city: '新北市' }
-, { schoolName: '新竹市三民國中', dsnsName: 'smjh.hc.edu.tw', city: '新竹市' }
-, { schoolName: '新竹市內湖國中', dsnsName: 'nhjhs.hc.edu.tw', city: '新竹市' }
-, { schoolName: '新竹市世界高級中學', dsnsName: 'wvs.hc.edu.tw', city: '新竹市' }
-, { schoolName: '新竹市立光華國中', dsnsName: 'khjh.hc.edu.tw', city: '新竹市' }
-, { schoolName: '新竹市光武國中', dsnsName: 'gwjh.hc.edu.tw', city: '新竹市' }
-, { schoolName: '新竹市光復高中國中部', dsnsName: 'j.kfsh.hc.edu.tw', city: '新竹市' }
-, { schoolName: '新竹市成德高中國中部', dsnsName: 'j.cdjh.hc.edu.tw', city: '新竹市' }
-, { schoolName: '新竹市竹光國中', dsnsName: 'zgjh.hc.edu.tw', city: '新竹市' }
-, { schoolName: '新竹市育賢國中', dsnsName: 'ysjh.hc.edu.tw', city: '新竹市' }
-, { schoolName: '新竹市矽谷國中小國中部', dsnsName: 'junior.sagor.hc.edu.tw', city: '新竹市' }
-, { schoolName: '新竹市虎林國中', dsnsName: 'hljh.hc.edu.tw', city: '新竹市' }
-, { schoolName: '新竹市南華國中', dsnsName: 'nhjh.hc.edu.tw', city: '新竹市' }
-, { schoolName: '新竹市建功高中高中部', dsnsName: 'h.ckjh.hc.edu.tw', city: '新竹市' }
-, { schoolName: '新竹市建功高中國中部', dsnsName: 'j.ckjh.hc.edu.tw', city: '新竹市' }
-, { schoolName: '新竹市建華國中', dsnsName: 'chjh.hc.edu.tw', city: '新竹市' }
-, { schoolName: '新竹市香山高中', dsnsName: 'hhjh.hc.edu.tw', city: '新竹市' }
-, { schoolName: '新竹市香山高中國中部', dsnsName: 'j.hhjh.hc.edu.tw', city: '新竹市' }
-, { schoolName: '新竹市培英國中', dsnsName: 'pijh.hc.edu.tw', city: '新竹市' }
-, { schoolName: '新竹市康乃薾雙語中小學', dsnsName: 'korrnell.com.tw', city: '新北市' }
-, { schoolName: '新竹市富禮國中', dsnsName: 'fljh.hc.edu.tw', city: '新竹市' }
-, { schoolName: '新竹市新科國中', dsnsName: 'hkjh.hc.edu.tw', city: '新竹市' }
-, { schoolName: '新竹市磐石高中國中部', dsnsName: 'j.sphs.hc.edu.tw', city: '新竹市' }
-, { schoolName: '新竹測試國中(test)', dsnsName: 'test.hc.edu.tw', city: '新竹市' }
-, { schoolName: '新竹縣忠信高中', dsnsName: 'chhs.hcc.edu.tw', city: '新竹縣' }
-, { schoolName: '新竹縣忠信高中全中部', dsnsName: 'j.chhs.hcc.edu.tw', city: '新竹縣' }
-, { schoolName: '新竹縣忠信高中進校', dsnsName: 'n.chhs.hcc.edu.tw', city: '新竹縣' }
-
-, { schoolName: '广州市西关实验小学', dsnsName: 'rmzlps.com', city: '其他' }
-, { schoolName: '悦知实验小学', dsnsName: 'dr-cloud.net', city: '其他' }
-, { schoolName: '康軒教室', dsnsName: 'iclassroom.knsh.com.tw', city: '其他' }
-, { schoolName: '網韻國民中學', dsnsName: 'cybertutor.com.tw', city: '其他' }
-, { schoolName: '網韻開發用環境', dsnsName: 'siteserver.com.tw', city: '其他' }
-, { schoolName: '澔學高中展示學校', dsnsName: 'demo.ischool.h', city: '其他' }
-, { schoolName: '澔學國中展示學校', dsnsName: 'demo.ischool.j', city: '其他' }
-, { schoolName: '澔學測試夜校', dsnsName: 'n.trialschool.tw', city: '其他' }
-, { schoolName: '澔學測試高中', dsnsName: 'h.trialschool.tw', city: '其他' }
-
-                    ]
+  {
+    "schoolName": "台大EMBA",
+    "dsnsName": "emba.ntu.edu.tw",
+    "scoreType": "高中",
+    "city": "台北市"
+  },
+  {
+    "schoolName": "台大EMBA測試學校",
+    "dsnsName": "test.emba.ntu.edu.tw",
+    "scoreType": "高中",
+    "city": "台北市"
+  },
+  {
+    "schoolName": "台中市中港高中",
+    "dsnsName": "cgjh.tcc.edu.tw",
+    "scoreType": "高中",
+    "city": "台中市"
+  },
+  {
+    "schoolName": "台中市立大里高中",
+    "dsnsName": "dljh.tcc.edu.tw",
+    "scoreType": "高中",
+    "city": "台中市"
+  },
+  {
+    "schoolName": "台中市立大里高中國中部",
+    "dsnsName": "j.dljh.tcc.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "台中市"
+  },
+  {
+    "schoolName": "台中市立惠文高中",
+    "dsnsName": "h.hwsh.tc.edu.tw",
+    "scoreType": "高中",
+    "city": "台中市"
+  },
+  {
+    "schoolName": "台中市立惠文高中國中部",
+    "dsnsName": "j.hwsh.tc.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "台中市"
+  },
+  {
+    "schoolName": "台中市明德女中",
+    "dsnsName": "mdhs.tc.edu.tw",
+    "scoreType": "高中",
+    "city": "台中市"
+  },
+  {
+    "schoolName": "台中市明德女中進校",
+    "dsnsName": "n.mdhs.tc.edu.tw",
+    "scoreType": "高中",
+    "city": "台中市"
+  },
+  {
+    "schoolName": "台中市青年高中",
+    "dsnsName": "ysjh.tcc.edu.tw",
+    "scoreType": "高中",
+    "city": "台中市"
+  },
+  {
+    "schoolName": "台中市爽文國中",
+    "dsnsName": "swjh.tcc.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "台中市"
+  },
+  {
+    "schoolName": "台中市新民高中",
+    "dsnsName": "shinmin.tc.edu.tw",
+    "scoreType": "高中",
+    "city": "台中市"
+  },
+  {
+    "schoolName": "台中市新民高中進校",
+    "dsnsName": "n.shinmin.tc.edu.tw",
+    "scoreType": "高中",
+    "city": "台中市"
+  },
+  {
+    "schoolName": "台北市士林高商",
+    "dsnsName": "slhs.tp.edu.tw",
+    "scoreType": "高中",
+    "city": "台北市"
+  },
+  {
+    "schoolName": "台北市私立薇閣中學高中國際部",
+    "dsnsName": "wghs.tp.edu.tw",
+    "scoreType": "高中",
+    "city": "台北市"
+  },
+  {
+    "schoolName": "台北市南港高工",
+    "dsnsName": "nkhs.tp.edu.tw",
+    "scoreType": "高中",
+    "city": "台北市"
+  },
+  {
+    "schoolName": "台北市南港高工夜間部",
+    "dsnsName": "n.nkhs.tp.edu.tw",
+    "scoreType": "高中",
+    "city": "台北市"
+  },
+  {
+    "schoolName": "台南市崑山中學",
+    "dsnsName": "kssh.tn.edu.tw",
+    "scoreType": "高中",
+    "city": "台南市"
+  },
+  {
+    "schoolName": "台南市崑山中學國中部",
+    "dsnsName": "j.kssh.tn.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "台南市"
+  },
+  {
+    "schoolName": "台南市崑山中學進校",
+    "dsnsName": "n.kssh.tn.edu.tw",
+    "scoreType": "高中",
+    "city": "台南市"
+  },
+  {
+    "schoolName": "高雄市立一甲國中",
+    "dsnsName": "yjm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立七賢國中",
+    "dsnsName": "chihjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立三民國中",
+    "dsnsName": "smjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立大仁國中",
+    "dsnsName": "tjjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立大社國中",
+    "dsnsName": "dam.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立大洲國中",
+    "dsnsName": "dz.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立大義國中",
+    "dsnsName": "dyjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立大寮國中",
+    "dsnsName": "dlm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立大樹國中",
+    "dsnsName": "dsm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立大灣國中",
+    "dsnsName": "dwm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立小港國中",
+    "dsnsName": "hkjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立中山國中",
+    "dsnsName": "csjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立中正高中",
+    "dsnsName": "cchs.kh.edu.tw",
+    "scoreType": "高中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立中正高中附設國中部",
+    "dsnsName": "j.cchs.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立中庄國中",
+    "dsnsName": "zzm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立中芸國中",
+    "dsnsName": "zym.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立中崙國中",
+    "dsnsName": "zlm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立五甲國中",
+    "dsnsName": "wzm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立五福國中",
+    "dsnsName": "wfjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立仁武高中附設國中",
+    "dsnsName": "j.rwm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立內門國中",
+    "dsnsName": "nmm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立六龜高中_試用中",
+    "dsnsName": "h.lgm.kh.edu.tw",
+    "scoreType": "高中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立六龜高中附設國中",
+    "dsnsName": "j.lgm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立文山高中附設國中",
+    "dsnsName": "j.wsm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立右昌國中",
+    "dsnsName": "yocjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立左營國中",
+    "dsnsName": "tyjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立正興國中",
+    "dsnsName": "chehjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立民族國中",
+    "dsnsName": "mtjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立永安國中",
+    "dsnsName": "yam.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立田寮國中",
+    "dsnsName": "tia.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立甲仙國中",
+    "dsnsName": "jxm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立立德國中",
+    "dsnsName": "ltjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立光華國中",
+    "dsnsName": "khjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立杉林國中",
+    "dsnsName": "slm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立那瑪夏國中",
+    "dsnsName": "sm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立岡山國中",
+    "dsnsName": "gsm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立忠孝國中",
+    "dsnsName": "zxm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立明華國中",
+    "dsnsName": "mhjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立明義國中",
+    "dsnsName": "myjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立林園高中附設國中",
+    "dsnsName": "j.ly.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立阿蓮國中",
+    "dsnsName": "alm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立青年國中",
+    "dsnsName": "qnm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立前金國中",
+    "dsnsName": "ccjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立前峰國中",
+    "dsnsName": "qfm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立前鎮國中",
+    "dsnsName": "qzjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立南隆國中",
+    "dsnsName": "nl.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立後勁國中",
+    "dsnsName": "hpjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立美濃國中",
+    "dsnsName": "mnm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立苓雅國中",
+    "dsnsName": "lyjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立英明國中",
+    "dsnsName": "inmjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立茂林國中",
+    "dsnsName": "ml.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立茄萣國中",
+    "dsnsName": "qdm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立桃源國中",
+    "dsnsName": "ty.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立國昌國中",
+    "dsnsName": "kcjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立梓官國中",
+    "dsnsName": "zgm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立蚵寮國中",
+    "dsnsName": "klm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立鳥松國中",
+    "dsnsName": "nsm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立湖內國中",
+    "dsnsName": "hn.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立陽明國中",
+    "dsnsName": "ymjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立圓富國中",
+    "dsnsName": "yfm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立新興高中",
+    "dsnsName": "hhhs.kh.edu.tw",
+    "scoreType": "高中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立新興高中國中部",
+    "dsnsName": "j.hhhs.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立楠梓國中",
+    "dsnsName": "ntjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立溪埔國中",
+    "dsnsName": "xpm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立獅甲國中",
+    "dsnsName": "scjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立瑞祥高中",
+    "dsnsName": "rssh.kh.edu.tw",
+    "scoreType": "高中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立瑞祥高中高中部_試用中",
+    "dsnsName": "h.rssh.kh.edu.tw",
+    "scoreType": "高中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立瑞豐國中",
+    "dsnsName": "rfjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立路竹高中附設國中",
+    "dsnsName": "j.lchs.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立鼎金國中",
+    "dsnsName": "djjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立鼓山高中高中部",
+    "dsnsName": "h.kusjh.kh.edu.tw",
+    "scoreType": "高中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立鼓山國中",
+    "dsnsName": "kusjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立嘉興國中",
+    "dsnsName": "jsm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立壽山國中",
+    "dsnsName": "ssjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立旗山國中",
+    "dsnsName": "csj.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立旗津國中",
+    "dsnsName": "cjjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立福山國中",
+    "dsnsName": "fsjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立福誠高中附設國中",
+    "dsnsName": "j.ftm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立福誠高中高中部_試用中",
+    "dsnsName": "h.ftm.kh.edu.tw",
+    "scoreType": "高中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立翠屏國中小國中部",
+    "dsnsName": "j.tpjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立鳳山國中",
+    "dsnsName": "fsm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立鳳甲國中",
+    "dsnsName": "fjm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立鳳西國中",
+    "dsnsName": "fxm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立鳳林國中",
+    "dsnsName": "fljh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立潮寮國中",
+    "dsnsName": "tlm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立橋頭國中",
+    "dsnsName": "qtm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立燕巢國中",
+    "dsnsName": "ycm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立興仁國中",
+    "dsnsName": "hjjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立餐旅國中",
+    "dsnsName": "nkhc.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立龍肚國中",
+    "dsnsName": "ldm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立龍華國中",
+    "dsnsName": "lhjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立彌陀國中",
+    "dsnsName": "mtm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立寶來國中",
+    "dsnsName": "blm.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市立鹽埕國中",
+    "dsnsName": "yacjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市私立大榮高中_試用中",
+    "dsnsName": "h.dystcs.kh.edu.tw",
+    "scoreType": "高中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市私立大榮高中國中部",
+    "dsnsName": "j.dystcs.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市私立正義高中附設國中",
+    "dsnsName": "j.cysh.khc.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市私立立志高中國中部",
+    "dsnsName": "j.lcvs.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市私立明誠中學國中部",
+    "dsnsName": "j.mcsh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市私立復華高中國中部",
+    "dsnsName": "j.fhhs.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市私立普門中學附設國中",
+    "dsnsName": "j.pmsh.khc.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市私立義大國際高中附設國中",
+    "dsnsName": "j.isis.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市私立道明中學國中部",
+    "dsnsName": "j.dmhs.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市私立樂育高中附設國中",
+    "dsnsName": "j.lysh.khc.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市私立優佳國中",
+    "dsnsName": "kivamjh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市高苑工商",
+    "dsnsName": "kyvs.ks.edu.tw",
+    "scoreType": "高中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市高苑工商進校",
+    "dsnsName": "n.kyvs.ks.edu.tw",
+    "scoreType": "高中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄市高雄高商進校",
+    "dsnsName": "n.ksvcs.kh.edu.tw",
+    "scoreType": "高中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "高雄測試國中",
+    "dsnsName": "test.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "國立大湖農工",
+    "dsnsName": "thvs.mlc.edu.tw",
+    "scoreType": "高中",
+    "city": "苗栗縣"
+  },
+  {
+    "schoolName": "國立中山大學附屬國光高級中學高中部_試用中",
+    "dsnsName": "h.kksh.kh.edu.tw",
+    "scoreType": "高中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "國立中山附中 (國立中山大學附屬國光高級中學國中部)",
+    "dsnsName": "j.kksh.kh.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "國立北斗家商",
+    "dsnsName": "pthc.chc.edu.tw",
+    "scoreType": "高中",
+    "city": "雲林縣"
+  },
+  {
+    "schoolName": "國立員林家商",
+    "dsnsName": "ylhcvs.chc.edu.tw",
+    "scoreType": "高中",
+    "city": "彰化縣"
+  },
+  {
+    "schoolName": "國立員林家商進修學校",
+    "dsnsName": "n.ylhcvs.chc.edu.tw",
+    "scoreType": "高中",
+    "city": "彰化縣"
+  },
+  {
+    "schoolName": "國立高師大附中",
+    "dsnsName": "j.nknush.kh.edu.tw",
+    "scoreType": "高中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "國立高雄師大附中",
+    "dsnsName": "nknush.kh.edu.tw",
+    "scoreType": "高中",
+    "city": "高雄市"
+  },
+  {
+    "schoolName": "國立彰化師大附屬高工",
+    "dsnsName": "sivs.chc.edu.tw",
+    "scoreType": "高中",
+    "city": "彰化縣"
+  },
+  {
+    "schoolName": "國立彰化師大附屬高工進校",
+    "dsnsName": "n.sivs.chc.edu.tw",
+    "scoreType": "高中",
+    "city": "彰化縣"
+  },
+  {
+    "schoolName": "國立彰化高商",
+    "dsnsName": "chsc.chc.edu.tw",
+    "scoreType": "高中",
+    "city": "彰化縣"
+  },
+  {
+    "schoolName": "基隆市光隆家商",
+    "dsnsName": "klhcvs.kl.edu.tw",
+    "scoreType": "高中",
+    "city": "基隆市"
+  },
+  {
+    "schoolName": "基隆市光隆家商進校",
+    "dsnsName": "n.klhcvs.kl.edu.tw",
+    "scoreType": "高中",
+    "city": "基隆市"
+  },
+  {
+    "schoolName": "新北市康橋雙語實驗高中_高中部",
+    "dsnsName": "h.kcbs.ntpc.edu.tw",
+    "scoreType": "高中",
+    "city": "新北市"
+  },
+  {
+    "schoolName": "新北市康橋雙語實驗高中_國中部",
+    "dsnsName": "j.kcbs.ntpc.edu.tw",
+    "scoreType": "高雄國中",
+    "city": "新北市"
+  },
+  {
+    "schoolName": "新竹市三民國中",
+    "dsnsName": "smjh.hc.edu.tw",
+    "scoreType": "新竹國中",
+    "city": "新竹市"
+  },
+  {
+    "schoolName": "新竹市內湖國中",
+    "dsnsName": "nhjhs.hc.edu.tw",
+    "scoreType": "新竹國中",
+    "city": "新竹市"
+  },
+  {
+    "schoolName": "新竹市世界高級中學",
+    "dsnsName": "wvs.hc.edu.tw",
+    "scoreType": "高中",
+    "city": "新竹市"
+  },
+  {
+    "schoolName": "新竹市立光華國中",
+    "dsnsName": "khjh.hc.edu.tw",
+    "scoreType": "新竹國中",
+    "city": "新竹市"
+  },
+  {
+    "schoolName": "新竹市光武國中",
+    "dsnsName": "gwjh.hc.edu.tw",
+    "scoreType": "新竹國中",
+    "city": "新竹市"
+  },
+  {
+    "schoolName": "新竹市光復高中國中部",
+    "dsnsName": "j.kfsh.hc.edu.tw",
+    "scoreType": "新竹國中",
+    "city": "新竹市"
+  },
+  {
+    "schoolName": "新竹市成德高中國中部",
+    "dsnsName": "j.cdjh.hc.edu.tw",
+    "scoreType": "新竹國中",
+    "city": "新竹市"
+  },
+  {
+    "schoolName": "新竹市竹光國中",
+    "dsnsName": "zgjh.hc.edu.tw",
+    "scoreType": "新竹國中",
+    "city": "新竹市"
+  },
+  {
+    "schoolName": "新竹市育賢國中",
+    "dsnsName": "ysjh.hc.edu.tw",
+    "scoreType": "新竹國中",
+    "city": "新竹市"
+  },
+  {
+    "schoolName": "新竹市矽谷國中小國中部",
+    "dsnsName": "junior.sagor.hc.edu.tw",
+    "scoreType": "新竹國中",
+    "city": "新竹市"
+  },
+  {
+    "schoolName": "新竹市虎林國中",
+    "dsnsName": "hljh.hc.edu.tw",
+    "scoreType": "新竹國中",
+    "city": "新竹市"
+  },
+  {
+    "schoolName": "新竹市南華國中",
+    "dsnsName": "nhjh.hc.edu.tw",
+    "scoreType": "新竹國中",
+    "city": "新竹市"
+  },
+  {
+    "schoolName": "新竹市建功高中高中部",
+    "dsnsName": "h.ckjh.hc.edu.tw",
+    "scoreType": "高中",
+    "city": "新竹市"
+  },
+  {
+    "schoolName": "新竹市建功高中國中部",
+    "dsnsName": "j.ckjh.hc.edu.tw",
+    "scoreType": "新竹國中",
+    "city": "新竹市"
+  },
+  {
+    "schoolName": "新竹市建華國中",
+    "dsnsName": "chjh.hc.edu.tw",
+    "scoreType": "新竹國中",
+    "city": "新竹市"
+  },
+  {
+    "schoolName": "新竹市香山高中",
+    "dsnsName": "hhjh.hc.edu.tw",
+    "scoreType": "高中",
+    "city": "新竹市"
+  },
+  {
+    "schoolName": "新竹市香山高中國中部",
+    "dsnsName": "j.hhjh.hc.edu.tw",
+    "scoreType": "新竹國中",
+    "city": "新竹市"
+  },
+  {
+    "schoolName": "新竹市培英國中",
+    "dsnsName": "pijh.hc.edu.tw",
+    "scoreType": "新竹國中",
+    "city": "新竹市"
+  },
+  {
+    "schoolName": "新竹市康乃薾雙語中小學",
+    "dsnsName": "korrnell.com.tw",
+    "scoreType": "高中",
+    "city": "新北市"
+  },
+  {
+    "schoolName": "新竹市富禮國中",
+    "dsnsName": "fljh.hc.edu.tw",
+    "scoreType": "新竹國中",
+    "city": "新竹市"
+  },
+  {
+    "schoolName": "新竹市新科國中",
+    "dsnsName": "hkjh.hc.edu.tw",
+    "scoreType": "新竹國中",
+    "city": "新竹市"
+  },
+  {
+    "schoolName": "新竹市磐石高中國中部",
+    "dsnsName": "j.sphs.hc.edu.tw",
+    "scoreType": "新竹國中",
+    "city": "新竹市"
+  },
+  {
+    "schoolName": "新竹測試國中(test)",
+    "dsnsName": "test.hc.edu.tw",
+    "scoreType": "新竹國中",
+    "city": "新竹市"
+  },
+  {
+    "schoolName": "新竹縣忠信高中",
+    "dsnsName": "chhs.hcc.edu.tw",
+    "scoreType": "高中",
+    "city": "新竹縣"
+  },
+  {
+    "schoolName": "新竹縣忠信高中全中部",
+    "dsnsName": "j.chhs.hcc.edu.tw",
+    "scoreType": "新竹國中",
+    "city": "新竹縣"
+  },
+  {
+    "schoolName": "新竹縣忠信高中進校",
+    "dsnsName": "n.chhs.hcc.edu.tw",
+    "scoreType": "高中",
+    "city": "新竹縣"
+  },
+  {
+    "schoolName": "广州市西关实验小学",
+    "dsnsName": "rmzlps.com",
+    "scoreType": "高中",
+    "city": "其他"
+  },
+  {
+    "schoolName": "悦知实验小学",
+    "dsnsName": "dr-cloud.net",
+    "scoreType": "高中",
+    "city": "其他"
+  },
+  {
+    "schoolName": "康軒教室",
+    "dsnsName": "iclassroom.knsh.com.tw",
+    "scoreType": "高中",
+    "city": "其他"
+  },
+  {
+    "schoolName": "網韻國民中學",
+    "dsnsName": "cybertutor.com.tw",
+    "scoreType": "高中",
+    "city": "其他"
+  },
+  {
+    "schoolName": "網韻開發用環境",
+    "dsnsName": "siteserver.com.tw",
+    "scoreType": "高中",
+    "city": "其他"
+  },
+  {
+    "schoolName": "澔學高中展示學校",
+    "dsnsName": "demo.ischool.h",
+    "scoreType": "高中",
+    "city": "其他"
+  },
+  {
+    "schoolName": "澔學國中展示學校",
+    "dsnsName": "demo.ischool.j",
+    "scoreType": "高雄國中",
+    "city": "其他"
+  },
+  {
+    "schoolName": "澔學測試夜校",
+    "dsnsName": "n.trialschool.tw",
+    "scoreType": "高中",
+    "city": "其他"
+  },
+  {
+    "schoolName": "澔學測試高中",
+    "dsnsName": "h.trialschool.tw",
+    "scoreType": "高中",
+    "city": "其他"
+  },
+  {
+    "schoolName": "澔學開發高中",
+    "dsnsName": "dev.sh_d",
+    "scoreType": "高中",
+    "city": "其他"
+  },
+  {
+    "schoolName": "澔學開發國中",
+    "dsnsName": "dev.jh_hs",
+    "scoreType": "新竹國中",
+    "city": "其他"
+  }
+]

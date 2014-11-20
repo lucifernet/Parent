@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">ischool 家長即時通</string>
+    <string name="app_name">ischool 家長</string>
     <string name="hello_world">Hello world!</string>
     <string name="empty"></string>
     <string name="slash">/</string>
@@ -18,6 +18,9 @@
     <string name="title_activity_discipline">奬懲紀錄</string>
     <string name="title_activity_sems_score">學期成績</string>
     <string name="close">關閉</string>
+
+    <!-- message fragment -->
+    <string name="message_empty_list">尚無任何訊息</string>
 
     <!-- other fragment -->
     <string name="btn_homework">每日作業</string>
@@ -92,16 +95,63 @@
     <string name="add_child_with_code_confirm">是的，我想掃瞄 QRCode</string>
     <string name="add_child_without_code">若是您沒有拿到 QRCode 表單，但是您知道小孩的學校與您的家長代碼，那麼您可以透過直接輸入來建立關聯。</string>
     <string name="add_child_without_code_confirm">我想直接輸入家長代碼</string>
-    
+    <string name="add_child_error_sync_children">同步學生資料時發生錯誤</string>
+    <string name="add_child_sync_children">同步學生資料中&#8230;</string>
+    <string name="add_child_save_accessable">儲存個人關聯學校中&#8230;</string>
+    <string name="add_child_error_save_accessable">儲存個人關聯學校時發生錯誤</string>
+    <string name="add_child_add_parent_completed">加入家長完成</string>
+    <string name="add_child_add_parent">加入家長中&#8230;</string>
+    <string name="add_child_connect_accessable">連結學校中&#8230;</string>
+    <string name="add_child_error_connect_accessable">連結學校時發生錯誤</string>
+    <string name="add_child_error_invalid_qrcode">不合法的 QRCode</string>
+    <string name="add_child_default_relation">家長</string>
+    <string name="add_child_error_sync_accessable">同步連結學校時發生錯誤</string>
+    <string name="add_child_sync_accessable">同步連結學校中&#8230;</string>
+
     <!-- parent code activity -->
     <string name="code_hint_input_school">請輸入學校</string>
     <string name="code_hint_input_code">請輸入家長代碼</string>
     <string name="code_hint_input_relation">與小孩的關係</string>
     <string name="code_button_ok">送出</string>
-    <string name="code_info_message">如何取得家長代碼?\n請詢問孩子或聯絡導師</string>    
+    <string name="code_info_message">如何取得家長代碼?\n請詢問孩子或聯絡導師</string>
     <string name="title_activity_add_child">加入小孩</string>
 
     <!-- message content activity -->
     <string name="message_content_attachments">附件</string>
     <string name="message_content_downloading">下載檔案中&#8230;</string>
+
+    <!-- settings activity -->
+    <string name="title_activity_settings">設定</string>
+    <string name="settings_login_name">登入帳號</string>
+    <string name="settings_sync_account">同步帳號</string>
+    <string name="settings_sync_ing">同步中</string>
+    <string name="settings_switch_account">切換帳號</string>
+
+    <!-- switch account activity -->
+    <string name="title_activity_switch_account">切換帳號</string>
+    <string name="switch_account_hint">請選擇想登入的帳號</string>
+
+    <!-- gcm notification -->
+    <string name="gcm_title">%s 封新訊息</string>
+
+    <!-- fragment jh semester score -->
+    <string name="jh_semester_score_LearnDomainScore">學期領域成績(七大學習領域)</string>
+    <string name="jh_semester_score_CourseLearnScore">課程學習成績(含彈性課程)</string>
+    <string name="jh_semester_score_bad_count">不及格領域數</string>
+    <string name="jh_semester_score_semester_temp" formatted="false">%s 學年度第  %s 學期</string>
+    <string name="jh_semester_score_semester_loading">讀取學生成績資料中&#8230;</string>
+    <string name="jh_semester_score_semester_weight">節/權數 :</string>
+    <string name="jh_semester_score_semester_textscore">文字描述 :</string>
+    <string name="jh_semester_score_empty_list">查無學期成績資訊</string>
+
+    <!-- eval score activity -->
+    <string name="title_activity_eval_score">評量成績</string>
+
+    <!-- eval score jh fragment -->
+    <string name="jh_eval_score_weight">權數 : </string>
+    <string name="jh_eval_score_regular">定期 : </string>
+    <string name="jh_eval_score_usual">平時 : </string>
+    <string name="jh_eval_score_total">總成績 : </string>
+    <string name="jh_eval_score_domain_weight_score">領域加權 : </string>
+    <string name="jh_eval_score_empty_list">查無評量成績資料</string>
 </resources>

@@ -1,7 +1,9 @@
 package tw.com.ischool.parent.tabs.others.sems_score;
 
+import ischool.dsa.client.OnReceiveListener;
 import tw.com.ischool.parent.ChildInfo;
 import tw.com.ischool.parent.R;
+import tw.com.ischool.parent.SchoolInfo;
 import tw.com.ischool.parent.tabs.others.ChildPicker;
 import tw.com.ischool.parent.tabs.others.ChildPicker.onChildSelectedListener;
 import android.app.ActionBar;
@@ -16,7 +18,6 @@ import android.widget.FrameLayout;
 public class SemsScoreActivity extends Activity {
 
 	public static final String PARAM_SELECTED_CHILD = "PARAM_SELECTED_CHILD";
-	// public static final String
 	private ChildPicker mChildPicker;
 	private ChildInfo mSelectedChild;
 	private FrameLayout mLayout;
@@ -40,13 +41,26 @@ public class SemsScoreActivity extends Activity {
 					public void onChildSelected(ChildInfo child, int count) {
 						mSelectedChild = child;
 
-						if (count == 1) {							
+						if (count == 1) {
 							String title = getString(R.string.title_activity_sems_score)
 									+ "(" + child.getStudentName() + ")";
 							setTitle(title);
 						}
-						
-						bindScore();
+
+						mSelectedChild.getSchoolInfo(SemsScoreActivity.this,
+								new OnReceiveListener<SchoolInfo>() {
+
+									@Override
+									public void onReceive(SchoolInfo result) {
+										bindScore(result.getSchoolType());
+									}
+
+									@Override
+									public void onError(Exception ex) {
+										bindScore(SchoolInfo.TYPE_SH);
+									}
+								});
+
 					}
 				});
 
@@ -71,23 +85,22 @@ public class SemsScoreActivity extends Activity {
 		switch (itemId) {
 		case android.R.id.home:
 			finish();
-
-			// Toast.makeText(this, "home pressed", Toast.LENGTH_LONG).show();
 			break;
-
 		}
 
 		return true;
 	}
 
-	private void bindScore() {
+	private void bindScore(String scoreType) {
 		FragmentManager fm = getFragmentManager();
 		FragmentTransaction ft = fm.beginTransaction();
 		Bundle bundle = new Bundle();
 		bundle.putSerializable(PARAM_SELECTED_CHILD, mSelectedChild);
 		Fragment fragment;
-		// TODO 判斷國中還是高中, 但先只做高中的版本
-		if (true) {
+
+		if (scoreType.equals(SchoolInfo.TYPE_JH_1)) {
+			fragment = new JHSemScoreFragment();
+		} else {
 			fragment = new ScoreFragment();
 		}
 
