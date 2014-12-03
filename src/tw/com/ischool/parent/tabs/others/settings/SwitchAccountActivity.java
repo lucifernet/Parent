@@ -30,6 +30,8 @@ public class SwitchAccountActivity extends Activity {
 	public static final String PARAM_ACCOUNT_NAME = "name";
 	public static final String PARAM_ACCOUNT_TYPE = "type";
 	public static final String BROADCAST_SWITCH_ACCOUNT = "switch_account";
+	public static final String FACEBOOK_ACCOUNT = "com.facebook.auth.login";
+	
 	private ListView mListView;
 	private ArrayList<Account> mAccountList;
 	private AccountAdapter mAdapter;
@@ -41,7 +43,7 @@ public class SwitchAccountActivity extends Activity {
 
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
-		
+
 		mListView = (ListView) findViewById(R.id.lvSwitchAccount);
 
 		mAccountList = new ArrayList<Account>();
@@ -54,8 +56,15 @@ public class SwitchAccountActivity extends Activity {
 				mAccountList.add(a);
 		}
 
+		// 加入 google 帳號
 		for (Account a : am
 				.getAccountsByType(GoogleAuthUtil.GOOGLE_ACCOUNT_TYPE)) {
+			if (!currentAccount.equalsIgnoreCase(a.name))
+				mAccountList.add(a);
+		}
+		
+		for (Account a : am
+				.getAccountsByType(FACEBOOK_ACCOUNT)) {
 			if (!currentAccount.equalsIgnoreCase(a.name))
 				mAccountList.add(a);
 		}
@@ -90,7 +99,7 @@ public class SwitchAccountActivity extends Activity {
 
 		return true;
 	}
-	
+
 	private class AccountAdapter extends BaseAdapter {
 
 		private LayoutInflater _inflater;
@@ -119,7 +128,8 @@ public class SwitchAccountActivity extends Activity {
 		public View getView(int position, View convertView, ViewGroup parent) {
 			ViewHolder holder = null;
 			if (convertView == null) {
-				convertView = _inflater.inflate(R.layout.item_account, parent, false);
+				convertView = _inflater.inflate(R.layout.item_account, parent,
+						false);
 
 				holder = new ViewHolder();
 				holder.txtAccount = (TextView) convertView
@@ -132,6 +142,8 @@ public class SwitchAccountActivity extends Activity {
 			Account a = mAccountList.get(position);
 			if (a.type.equals(LoginHelper.ACCOUNT_TYPE)) {
 				holder.imgAccountType.setImageResource(R.drawable.icon);
+			} else if (a.type.equals(FACEBOOK_ACCOUNT)) {
+				holder.imgAccountType.setImageResource(R.drawable.facebook);				
 			} else {
 				holder.imgAccountType.setImageResource(R.drawable.google);
 			}

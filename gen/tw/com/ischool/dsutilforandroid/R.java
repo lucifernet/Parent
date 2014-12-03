@@ -8,16 +8,16 @@ package tw.com.ischool.dsutilforandroid;
 
 public final class R {
 	public static final class id {
-		public static final int webLogin = 0x7f080057;
+		public static final int webLogin = 0x7f0b007d;
 	}
 	public static final class layout {
-		public static final int fragment_signin = 0x7f030016;
+		public static final int fragment_signin = 0x7f030025;
 	}
 	public static final class string {
-		public static final int app_name = 0x7f090020;
+		public static final int app_name = 0x7f09003d;
 	}
 	public static final class style {
-		public static final int AppBaseTheme = 0x7f0c0000;
-		public static final int AppTheme = 0x7f0c0001;
+		public static final int AppBaseTheme = 0x7f0a0003;
+		public static final int AppTheme = 0x7f0a0004;
 	}
 }

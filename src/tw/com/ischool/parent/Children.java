@@ -46,4 +46,24 @@ public class Children implements Serializable{
 	public List<ChildInfo> getChildren() {
 		return _children;
 	}
+
+	public void remove(ChildInfo child) {
+		int index = -1;
+		for(int i=0;i<_children.size();i++){
+			ChildInfo c = _children.get(i);
+			if(c == child){
+				index = i;
+				break;
+			}
+			
+			if(c.getStudentId().equals(child.getStudentId()) && c.getStudentName().equals(child.getStudentName())){
+				index = i;
+				break;
+			}
+		}
+		
+		if(index > -1){
+			_children.remove(index);
+		}		
+	}
 }

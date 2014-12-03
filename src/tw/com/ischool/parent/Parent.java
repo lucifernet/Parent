@@ -1,11 +1,7 @@
 package tw.com.ischool.parent;
 
-import ischool.utilities.StringUtil;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import android.content.SharedPreferences;
 
 import tw.com.ischool.account.login.Accessable;
 import tw.com.ischool.account.login.ConnectionHelper;
@@ -48,6 +44,8 @@ public class Parent {
 	public static final String SERVICE_SH_EVAL_SCORE_GET_SCORE = "evaluateScoreSH.GetExamScore";
 
 	public static final String SERVICE_SH_EVAL_SCORE_GET_SEMESTER = "evaluateScoreSH.GetSemesters";
+
+	public static final String SERVICE_REMOVE_CHILD = "main.RemoveChild";
 
 
 	private static ConnectionHelper sConnectionHelper;

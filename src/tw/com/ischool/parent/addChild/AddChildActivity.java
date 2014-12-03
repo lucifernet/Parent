@@ -91,6 +91,12 @@ public class AddChildActivity extends Activity {
 			if (resultCode == RESULT_OK) {
 				// content sample : EA47FF@test.b.nehs.hc.edu.tw
 				String contents = data.getStringExtra("SCAN_RESULT");
+				
+				if (contents == null) {
+					setError(R.string.add_child_error_null_result);
+					return;
+				}
+				
 				if (!contents.contains("@")) {
 					setError(R.string.add_child_error_invalid_qrcode);
 					return;

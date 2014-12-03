@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="tw.com.ischool.parent"
-    android:versionCode="9"
-    android:versionName="1.2.6" >
+    android:versionCode="11"
+    android:versionName="1.2.8" >
 
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" >
     </uses-permission>
@@ -70,6 +70,10 @@
             android:name=".login.LoginActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.facebook.LoginActivity"
+            android:label="@string/title_activity_facebook_login" >
         </activity>
 
         <service
@@ -144,6 +148,10 @@
             android:label="@string/title_activity_eval_score"
             android:screenOrientation="portrait" >
         </activity>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
     </application>
 
 </manifest>

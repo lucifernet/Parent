@@ -20,18 +20,24 @@ import tw.com.ischool.account.login.GoogleAuthenticateTask.GoogleOAuthTokenListe
 import tw.com.ischool.account.login.GreeningConnectionTask;
 import tw.com.ischool.account.login.LoginHelper;
 import tw.com.ischool.account.login.RefreshGreeningTokenTask;
+import tw.com.ischool.account.login.oauth.ITokenExchanger;
+import tw.com.ischool.account.login.oauth.TokenExchangerProvider;
 import tw.com.ischool.parent.tabs.others.settings.SwitchAccountActivity;
 import tw.com.ischool.parent.util.PreferenceHelper;
 import android.accounts.Account;
 import android.accounts.AccountAuthenticatorActivity;
 import android.accounts.AccountManager;
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.facebook.Session;
+import com.facebook.SessionState;
 import com.google.android.gms.auth.GoogleAuthUtil;
 
 public class ParentLoginActivity extends AccountAuthenticatorActivity {
@@ -41,6 +47,8 @@ public class ParentLoginActivity extends AccountAuthenticatorActivity {
 
 	public static final int REQUEST_CODE_GOOGLE_OAUTH = 1001;
 	public static final int REQUEST_CODE_LOGIN = 999;
+
+	public static final int REQUEST_CODE_FACEBOOK_OAUTH = 64206;
 
 	// public static final String PARAM_CONNECTION_DATA = "ConnectionData";
 	public static final String PARAM_CONNECTION_FAIL_MESSAGE = "FailMessage";
@@ -68,12 +76,17 @@ public class ParentLoginActivity extends AccountAuthenticatorActivity {
 
 		Intent intent = getIntent();
 		String currentAccountName, currentAccountType;
+		
+		
 		if (intent.hasExtra(SwitchAccountActivity.PARAM_ACCOUNT_NAME)) {
 			currentAccountName = intent
 					.getStringExtra(SwitchAccountActivity.PARAM_ACCOUNT_NAME);
 			currentAccountType = intent
 					.getStringExtra(SwitchAccountActivity.PARAM_ACCOUNT_TYPE);
 
+			//這裡應該是由切換帳號所觸發, 為了避免取錯 cache, 所以必須先將 cache 的帳號變更為目標帳號
+			PreferenceHelper.cacheUseAccount(this, currentAccountName);
+			
 			loginAccount(currentAccountName, currentAccountType);
 		} else {
 			login();
@@ -94,8 +107,10 @@ public class ParentLoginActivity extends AccountAuthenticatorActivity {
 					.getAccountsByType(currentAccountType);
 			Account ischoolAccount = null;
 			for (Account a : ischoolAccounts) {
-				ischoolAccount = a;
-				break;
+				if (a.name.equalsIgnoreCase(currentAccountName)) {
+					ischoolAccount = a;
+					break;
+				}
 			}
 			if (ischoolAccount != null)
 				loginIschoolAccount(ischoolAccount);
@@ -105,6 +120,12 @@ public class ParentLoginActivity extends AccountAuthenticatorActivity {
 					+ " 」登入.");
 
 			exchangeGreeningTokenWithGoogleAccount(currentAccountName);
+		} else if (currentAccountType
+				.equalsIgnoreCase(SwitchAccountActivity.FACEBOOK_ACCOUNT)) {
+			mProgressMessage.setText("使用 facebook 帳戶「 " + currentAccountName
+					+ " 」登入.");
+
+			exchangeGreeningTokenWithFBAccount(currentAccountName);
 		}
 
 	}
@@ -264,6 +285,61 @@ public class ParentLoginActivity extends AccountAuthenticatorActivity {
 		auth.execute(googleAccountName);
 	}
 
+	// 拿 FB Account 去登入 Greening Account
+	private void exchangeGreeningTokenWithFBAccount(final String account) {
+
+		mProgressMessage.setText("取得 Facebook OAuth Token.");
+		
+		final ArrayList<String> permissions = new ArrayList<String>();
+		permissions.add("email");
+		
+		FBSession.openActiveSession(this, true, new Session.StatusCallback() {
+
+			@Override
+			public void call(Session session, SessionState state,
+					Exception exception) {
+
+				if (session.isOpened()) {
+					
+					exchageGreeningTokenWithFBAccount2(account, session);
+
+				}
+			}
+
+		},permissions);
+	}
+
+	private void exchageGreeningTokenWithFBAccount2(final String accountName,
+			Session fbsession) {
+		String token = fbsession.getAccessToken();
+		ITokenExchanger te = TokenExchangerProvider.newInstance("facebook");
+		te.exchageToken(Parent.CLIENT_ID, Parent.CLIENT_SEC, token,
+				new OnReceiveListener<String>() {
+
+					@Override
+					public void onReceive(String greeningTokenJSONString) {
+						JSONObject json = JSONUtil
+								.parseJSON(greeningTokenJSONString);
+						if (json.has("error")) {
+							String error = JSONUtil.getString(json, "error")
+									+ " : "
+									+ JSONUtil.getString(json,
+											"error_description");
+							onDeadError("交換 Greening Token 時發生錯誤",
+									new Exception(error));
+						} else {
+							onReceiveGreeningToken(accountName,
+									greeningTokenJSONString);
+						}
+					}
+
+					@Override
+					public void onError(Exception ex) {
+						onDeadError("交換 Greening Token 時發生錯誤", ex);
+					}
+				});
+	}
+
 	// 拿到 Google token 後向 greening 交換 token
 	private void exchangeGreeningToken(final String googleAccount,
 			String googleToken) {
@@ -274,43 +350,7 @@ public class ParentLoginActivity extends AccountAuthenticatorActivity {
 
 			@Override
 			public void onReceive(String greeningTokenJSONString) {
-				// 這邊要建立 ischool Account 把換到的 greening token 存到 Account 裡,
-				// 然後交換 greening 連線
-				JSONObject json = JSONUtil.parseJSON(greeningTokenJSONString);
-				ConnectionData data = new ConnectionData(googleAccount, json);
-
-				String refreshToken = JSONUtil.getString(json, "refresh_token");
-				String accessToken = JSONUtil.getString(json, "access_token");
-
-				mProgressMessage.setText("新增 ischool 帳號.");
-				// Account
-				Account account = new Account(googleAccount,
-						LoginHelper.ACCOUNT_TYPE);
-
-				Bundle userdata = new Bundle();
-				userdata.putString(AccountManager.KEY_AUTHTOKEN, refreshToken);
-
-				// 這邊如果該帳號已存在時會傳回 false
-				if (mAccountManager.addAccountExplicitly(account, null,
-						userdata)) {
-					Bundle result = new Bundle();
-					result.putString(AccountManager.KEY_ACCOUNT_NAME,
-							googleAccount);
-					result.putString(AccountManager.KEY_AUTHENTICATOR_TYPES,
-							LoginHelper.ACCOUNT_TYPE);
-					result.putString(AccountManager.KEY_AUTHTOKEN, accessToken);
-					setAccountAuthenticatorResult(result);
-
-					mAccountManager.setUserData(account,
-							AccountManager.KEY_AUTHTOKEN, refreshToken);
-
-				} else {
-					// 帳號已存在, 把新的 refresh token 存進帳號中
-					mAccountManager.setUserData(account,
-							AccountManager.KEY_AUTHTOKEN, refreshToken);
-				}
-
-				buildGreeningConnection(data);
+				onReceiveGreeningToken(googleAccount, greeningTokenJSONString);
 			}
 
 			@Override
@@ -319,6 +359,44 @@ public class ParentLoginActivity extends AccountAuthenticatorActivity {
 			}
 		});
 		task.execute(googleToken);
+	}
+
+	private void onReceiveGreeningToken(String accountName,
+			String greeningTokenJSONString) {
+		// 這邊要建立 ischool Account 把換到的 greening token 存到 Account 裡,
+		// 然後交換 greening 連線
+		JSONObject json = JSONUtil.parseJSON(greeningTokenJSONString);
+		ConnectionData data = new ConnectionData(accountName, json);
+
+		String refreshToken = JSONUtil.getString(json, "refresh_token");
+		String accessToken = JSONUtil.getString(json, "access_token");
+
+		mProgressMessage.setText("新增 ischool 帳號.");
+		// Account
+		Account account = new Account(accountName, LoginHelper.ACCOUNT_TYPE);
+
+		Bundle userdata = new Bundle();
+		userdata.putString(AccountManager.KEY_AUTHTOKEN, refreshToken);
+
+		// 這邊如果該帳號已存在時會傳回 false
+		if (mAccountManager.addAccountExplicitly(account, null, userdata)) {
+			Bundle result = new Bundle();
+			result.putString(AccountManager.KEY_ACCOUNT_NAME, accountName);
+			result.putString(AccountManager.KEY_AUTHENTICATOR_TYPES,
+					LoginHelper.ACCOUNT_TYPE);
+			result.putString(AccountManager.KEY_AUTHTOKEN, accessToken);
+			setAccountAuthenticatorResult(result);
+
+			mAccountManager.setUserData(account, AccountManager.KEY_AUTHTOKEN,
+					refreshToken);
+
+		} else {
+			// 帳號已存在, 把新的 refresh token 存進帳號中
+			mAccountManager.setUserData(account, AccountManager.KEY_AUTHTOKEN,
+					refreshToken);
+		}
+
+		buildGreeningConnection(data);
 	}
 
 	// 建立 Greening 連線
@@ -349,19 +427,29 @@ public class ParentLoginActivity extends AccountAuthenticatorActivity {
 		mProgressMessage.setText("取得可登入學校...");
 
 		final ConnectionHelper ch = data.createConnectionHelper(this);
-		ch.getQuickAccessables(this, new OnReceiveListener<List<Accessable>>() {
 
-			@Override
-			public void onReceive(List<Accessable> result) {
-				mProgressMessage.setText("取得學校完成");
-				getChildren(ch, result);
-			}
+		List<Accessable> accessables = PreferenceHelper.getAccessables(this);
+		if (accessables.size() == 0) {
+			ch.getAccessables(this, new OnReceiveListener<List<Accessable>>() {
 
-			@Override
-			public void onError(Exception ex) {
-				onDeadError("取得學校時發生錯誤", ex);
-			}
-		});
+				@Override
+				public void onReceive(List<Accessable> result) {
+					PreferenceHelper.cacheAccessables(ParentLoginActivity.this,
+							result);
+					mProgressMessage.setText("取得學校完成");
+					getChildren(ch, result);
+				}
+
+				@Override
+				public void onError(Exception ex) {
+					onDeadError("取得學校時發生錯誤", ex);
+				}
+			});
+		} else {
+			mProgressMessage.setText("取得學校完成");
+			getChildren(ch, accessables);
+		}
+
 	}
 
 	// 取得小孩清單
@@ -388,7 +476,6 @@ public class ParentLoginActivity extends AccountAuthenticatorActivity {
 			@Override
 			public void onReceive(Children result) {
 				onSuccess(ch, result);
-
 			}
 
 			@Override
@@ -403,6 +490,8 @@ public class ParentLoginActivity extends AccountAuthenticatorActivity {
 		mProgressMessage.setText("完成登入!");
 
 		sConnectionHelper = ch;
+		Parent.setConnectionHelper(ch);
+		Parent.setChildren(children);
 
 		try {
 			PreferenceHelper.cacheUseAccount(this, ch.getAccount().name);
@@ -463,6 +552,10 @@ public class ParentLoginActivity extends AccountAuthenticatorActivity {
 			if (resultCode == RESULT_OK) {
 				login();
 			}
+		} else if (requestCode == REQUEST_CODE_FACEBOOK_OAUTH
+				&& resultCode == RESULT_OK) {
+			Session.getActiveSession().onActivityResult(this, requestCode,
+					resultCode, data);
 		}
 	}
 
@@ -470,4 +563,31 @@ public class ParentLoginActivity extends AccountAuthenticatorActivity {
 		return sConnectionHelper;
 	}
 
+	/**
+	 * 因為在 facebook oauth 3.0 sdk 中不支援直接指定權限
+	 * 所以直接使用這個方式來取代…
+	 * @see http://stackoverflow.com/a/14048644
+	 * **/
+	private static class FBSession extends Session {
+
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		public FBSession(Context currentContext) {
+			super(currentContext);		
+		}
+		
+		private static Session openActiveSession(Activity activity, boolean allowLoginUI, StatusCallback callback, List<String> permissions) {
+		    OpenRequest openRequest = new OpenRequest(activity).setPermissions(permissions).setCallback(callback);
+		    Session session = new Builder(activity).build();
+		    if (SessionState.CREATED_TOKEN_LOADED.equals(session.getState()) || allowLoginUI) {
+		        Session.setActiveSession(session);
+		        session.openForRead(openRequest);
+		        return session;
+		    }
+		    return null;
+		}
+	}
 }

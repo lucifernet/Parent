@@ -14,6 +14,7 @@ import tw.com.ischool.account.login.RefreshGreeningTokenTask;
 import tw.com.ischool.parent.Children;
 import tw.com.ischool.parent.ChildrenHelper;
 import tw.com.ischool.parent.Parent;
+import tw.com.ischool.parent.ParentLoginActivity;
 import tw.com.ischool.parent.util.PreferenceHelper;
 import android.accounts.Account;
 import android.accounts.AccountManager;
@@ -93,21 +94,42 @@ public class LoginHandler {
 
 	// 取得可登入學校
 	private void getAccessables(final ConnectionData data) {
-
 		final ConnectionHelper ch = data.createConnectionHelper(_context);
-		ch.getQuickAccessables(_context,
-				new OnReceiveListener<List<Accessable>>() {
 
-					@Override
-					public void onReceive(List<Accessable> result) {
-						getChildren(ch, result);
-					}
+		List<Accessable> accessables = PreferenceHelper.getAccessables(_context);
+		if (accessables.size() == 0) {
+			ch.getAccessables(_context, new OnReceiveListener<List<Accessable>>() {
 
-					@Override
-					public void onError(Exception ex) {
-						_listener.onNotLogin();
-					}
-				});
+				@Override
+				public void onReceive(List<Accessable> result) {
+					PreferenceHelper.cacheAccessables(_context, result);
+				
+					getChildren(ch, result);
+				}
+
+				@Override
+				public void onError(Exception ex) {
+					_listener.onNotLogin();
+				}
+			});
+		} else {		
+			getChildren(ch, accessables);
+		}
+		
+//		final ConnectionHelper ch = data.createConnectionHelper(_context);
+//		ch.getQuickAccessables(_context,
+//				new OnReceiveListener<List<Accessable>>() {
+//
+//					@Override
+//					public void onReceive(List<Accessable> result) {
+//						getChildren(ch, result);
+//					}
+//
+//					@Override
+//					public void onError(Exception ex) {
+//						_listener.onNotLogin();
+//					}
+//				});
 	}
 
 	// 取得小孩清單

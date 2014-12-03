@@ -17,8 +17,12 @@
     <string name="title_activity_attendance">缺曠紀錄</string>
     <string name="title_activity_discipline">奬懲紀錄</string>
     <string name="title_activity_sems_score">學期成績</string>
+    <string name="title_activity_facebook_login">Facebook 登入</string>
     <string name="close">關閉</string>
 
+    <!-- facebook api -->
+    <string name="facebook_app_id">1510324835916468</string>
+    
     <!-- message fragment -->
     <string name="message_empty_list">尚無任何訊息</string>
 
@@ -107,6 +111,7 @@
     <string name="add_child_default_relation">家長</string>
     <string name="add_child_error_sync_accessable">同步連結學校時發生錯誤</string>
     <string name="add_child_sync_accessable">同步連結學校中&#8230;</string>
+    <string name="add_child_error_null_result">無掃瞄結果</string>
 
     <!-- parent code activity -->
     <string name="code_hint_input_school">請輸入學校</string>
@@ -126,7 +131,11 @@
     <string name="settings_sync_account">同步帳號</string>
     <string name="settings_sync_ing">同步中</string>
     <string name="settings_switch_account">切換帳號</string>
-
+	<string name="settings_manager_children">管理小孩</string>
+	<string name="settings_remove_child">移除</string>
+    <string name="settings_remove_child_message">確定將【 %s 】自小孩清單中移除?</string>
+    <string name="settings_remove_child_error">移除小孩時發生錯誤 !</string>
+    
     <!-- switch account activity -->
     <string name="title_activity_switch_account">切換帳號</string>
     <string name="switch_account_hint">請選擇想登入的帳號</string>

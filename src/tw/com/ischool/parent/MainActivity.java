@@ -228,6 +228,11 @@ public class MainActivity extends FragmentActivity {
 
 				ConnectionHelper connectionHelper = ParentLoginActivity
 						.getConnectionHelper();
+				
+				if(data == null){
+					return;
+				}
+				
 				Children children = (Children) data
 						.getSerializableExtra(ParentLoginActivity.PARAM_CHILDREN);
 

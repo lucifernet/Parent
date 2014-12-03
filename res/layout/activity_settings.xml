@@ -14,81 +14,107 @@
         android:contentDescription="@string/empty"
         android:src="@drawable/settings" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:background="@drawable/gray_border"
-        android:orientation="vertical" >
+        android:layout_height="0dp"
+        android:layout_weight="1" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/settings_login_name" />
-
-            <TextView
-                android:id="@+id/txtLoginName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
             android:layout_margin="5dp"
-            android:background="#CCCCCC" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="right"
-            android:orientation="horizontal" >
+            android:background="@drawable/gray_border"
+            android:orientation="vertical" >
 
             <LinearLayout
-                android:id="@+id/layoutBtnSync"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:background="@drawable/gray_back_border"
-                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
-                <ProgressBar
-                    android:id="@+id/progressSync"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="5dp"
-                    android:background="@xml/progress"
-                    android:visibility="gone" />
-
                 <TextView
-                    android:id="@+id/txtBtnSync"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:text="@string/settings_sync_account"
-                    android:textColor="@android:color/secondary_text_light"
-                    android:textSize="12sp" />
+                    android:text="@string/settings_login_name" android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/txtLoginName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right" />
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btnSwitchAccount"
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_margin="5dp"
+                android:background="#CCCCCC" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="right"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:id="@+id/layoutBtnSync"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:background="@drawable/gray_back_border"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <ProgressBar
+                        android:id="@+id/progressSync"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="5dp"
+                        android:background="@xml/progress"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/txtBtnSync"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:text="@string/settings_sync_account"
+                        android:textColor="@android:color/secondary_text_light"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnSwitchAccount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/gray_back_border"
+                    android:text="@string/settings_switch_account"
+                    android:textColor="@android:color/secondary_text_light"
+                    android:textSize="12sp" >
+                </Button>
+            </LinearLayout>
+
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_marginLeft="5dp"
-                android:background="@drawable/gray_back_border"
-                android:text="@string/settings_switch_account"
-                android:textColor="@android:color/secondary_text_light"
-                android:textSize="12sp" >
-            </Button>
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp" android:textStyle="bold"
+                android:text="@string/settings_manager_children" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_margin="5dp"
+                android:background="#CCCCCC" />
+
+            <LinearLayout
+                android:id="@+id/layoutChildren"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"                
+                android:orientation="vertical" >
+
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
